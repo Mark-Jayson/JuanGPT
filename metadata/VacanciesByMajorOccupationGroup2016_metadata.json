@@ -1,0 +1,12 @@
+{
+    "source": "data\\VacanciesByMajorOccupationGroup2016.csv",
+    "description": "Number of Job Vacancies and Applicants in Establishments Employing 20 or More Workers by Type of Position and by Major Occupation Group, Philippines: September 2021 to August 2022",
+    "warnings": [],
+    "encoding": "ascii",
+    "delimiter": ",",
+    "num_rows": 10,
+    "num_columns": 1,
+    "column_names": [
+        "major_occupation_group;2022_total_number_of_vacancies;2022_total_number_of_applicants;2022_entry_level_number_of_vacancies;2022_entry_level_number_of_applicants;2022_junior_number_of_vacancies;2022_junior_number_of_applicants;2022_senior_number_of_vacancies;2022_senior_number_of_applicants;2022_executive_number_of_vacancies;2022_executive_number_of_applicants"
+    ]
+}

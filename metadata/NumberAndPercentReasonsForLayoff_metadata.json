@@ -1,0 +1,12 @@
+{
+    "source": "data\\NumberAndPercentReasonsForLayoff.csv",
+    "description": "Number and Percent Distribution of Employees Separated from Work by Reasons for Layoff and Displacement/Dismissal (Employer-Initiated) in Establishments with 20 or More Workers, National Capital Region: 1st Quarter 2020 to 4th Quarter 2021",
+    "warnings": [],
+    "encoding": "Windows-1252",
+    "delimiter": ",",
+    "num_rows": 25,
+    "num_columns": 1,
+    "column_names": [
+        "reasons;2020_q1_number_of_employees;2020_q1_percent_(%);2020_q2_number_of_employees;2020_q2_percent_(%);2020_q3_number_of_employees;2020_q3_percent_(%);2020_q4_number_of_employees;2020_q4_percent_(%);2021_q1_number_of_employees;2021_q1_percent_(%);2021_q2_number_of_employees;2021_q2_percent_(%);2021_q3_number_of_employees;2021_q3_percent_(%);2021_q4_number_of_employees;2021_q4_percent_(%)"
+    ]
+}

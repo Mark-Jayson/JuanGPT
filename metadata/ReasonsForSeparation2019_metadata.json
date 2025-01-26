@@ -1,0 +1,12 @@
+{
+    "source": "data\\ReasonsForSeparation2019.csv",
+    "description": "Reasons for Separations Initiated by Employers in Establishments with 20 or More Workers, National Capital Region: 1st Quarter 2018 to 4th Quarter 2019",
+    "warnings": [],
+    "encoding": "ascii",
+    "delimiter": ",",
+    "num_rows": 14,
+    "num_columns": 1,
+    "column_names": [
+        "reason;2018_q1;2018_q2;2018_q3;2018_q4;2019_q1;2019_q2;2019_q3;2019_q4"
+    ]
+}

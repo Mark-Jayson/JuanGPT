@@ -1,0 +1,14 @@
+{
+    "source": "data\\FemaleShareSenior2012.csv",
+    "description": "Female Share of Employment in Senior and Middle Management (Based on 2012 PSOC)",
+    "warnings": [
+        "Column indicator;2016;2017;2018 might be better as categorical"
+    ],
+    "encoding": "ascii",
+    "delimiter": ",",
+    "num_rows": 4,
+    "num_columns": 1,
+    "column_names": [
+        "indicator;2016;2017;2018"
+    ]
+}

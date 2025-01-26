@@ -1,0 +1,12 @@
+{
+    "source": "data\\NumberAndDistributionIndustry.csv",
+    "description": "Number and Distribution of Job Vacancies in Establishments with 20 or More Workers by Major Industry Group, National Capital Region: 1st Quarter 2014 to 4th Quarter 2021",
+    "warnings": [],
+    "encoding": "ascii",
+    "delimiter": ",",
+    "num_rows": 21,
+    "num_columns": 1,
+    "column_names": [
+        "major_industry_group;2014_q1_number;2014_q1_percent_share_(%);2014_q2_number;2014_q2_percent_share_(%);2014_q3_number;2014_q3_percent_share_(%);2014_q4_number;2014_q4_percent_share_(%);2015_q1_number;2015_q1_percent_share_(%);2015_q2_number;2015_q2_percent_share_(%);2015_q3_number;2015_q3_percent_share_(%);2015_q4_number;2015_q4_percent_share_(%);2016_q1_number;2016_q1_percent_share_(%);2016_q2_number;2016_q2_percent_share_(%);2016_q3_number;2016_q3_percent_share_(%);2016_q4_number;2016_q4_percent_share_(%);2017_q1_number;2017_q1_percent_share_(%);2017_q2_number;2017_q2_percent_share_(%);2017_q3_number;2017_q3_percent_share_(%);2017_q4_number;2017_q4_percent_share_(%);2018_q1_number;2018_q1_percent_share_(%);2018_q2_number;2018_q2_percent_share_(%);2018_q3_number;2018_q3_percent_share_(%);2018_q4_number;2018_q4_percent_share_(%);2019_q1_number;2019_q1_percent_share_(%);2019_q2_number;2019_q2_percent_share_(%);2019_q3_number;2019_q3_percent_share_(%);2019_q4_number;2019_q4_percent_share_(%);2020_q1_number;2020_q1_percent_share_(%);2020_q2_number;2020_q2_percent_share_(%);2020_q3_number;2020_q3_percent_share_(%);2020_q4_number;2020_q4_percent_share_(%);2021_q1_number;2021_q1_percent_share_(%);2021_q2_number;2021_q2_percent_share_(%);2021_q3_number;2021_q3_percent_share_(%);2021_q4_number;2021_q4_percent_share_(%)"
+    ]
+}

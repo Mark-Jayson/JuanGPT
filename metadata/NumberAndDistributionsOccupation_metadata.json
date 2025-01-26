@@ -1,0 +1,12 @@
+{
+    "source": "data\\NumberAndDistributionsOccupation.csv",
+    "description": "Number and Distribution of Job Vacancies in Establishments with 20 or More Workers by Major Occupation Group, National Capital Region: 1st Quarter 2018 to 4th Quarter 2021",
+    "warnings": [],
+    "encoding": "ascii",
+    "delimiter": ",",
+    "num_rows": 10,
+    "num_columns": 1,
+    "column_names": [
+        "major_occupation_group;2018_q1_number;2018_q1_percent_share_(%);2018_q2_number;2018_q2_percent_share_(%);2018_q3_number;2018_q3_percent_share_(%);2018_q4_number;2018_q4_percent_share_(%);2019_q1_number;2019_q1_percent_share_(%);2019_q2_number;2019_q2_percent_share_(%);2019_q3_number;2019_q3_percent_share_(%);2019_q4_number;2019_q4_percent_share_(%);2020_q1_number;2020_q1_percent_share_(%);2020_q2_number;2020_q2_percent_share_(%);2020_q3_number;2020_q3_percent_share_(%);2020_q4_number;2020_q4_percent_share_(%);2021_q1_number;2021_q1_percent_share_(%);2021_q2_number;2021_q2_percent_share_(%);2021_q3_number;2021_q3_percent_share_(%);2021_q4_number;2021_q4_percent_share_(%)"
+    ]
+}

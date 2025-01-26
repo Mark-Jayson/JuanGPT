@@ -1,0 +1,14 @@
+{
+    "source": "data\\FemaleShareSenior1992.csv",
+    "description": "Female Share of Employment in Senior and Middle Management (Based on 1992 PSOC)",
+    "warnings": [
+        "Column female_share_of_employment_in_senior_and_middle_management_isco_88_groups_11_and_12_(%);..;..;..;..;..;..;40;37;40;39;39;39;39;42;43;42;41;42;43;42;43 might be better as categorical"
+    ],
+    "encoding": "ascii",
+    "delimiter": ",",
+    "num_rows": 3,
+    "num_columns": 1,
+    "column_names": [
+        "female_share_of_employment_in_senior_and_middle_management_isco_88_groups_11_and_12_(%);..;..;..;..;..;..;40;37;40;39;39;39;39;42;43;42;41;42;43;42;43"
+    ]
+}

@@ -1,5 +1,6 @@
 {
     "source": "data\\MedianMonthlyData.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__OWS/0041B3E1040.px/table/tableViewLayout1/?rxid=5e57853f-ceff-4449-9333-678a00dfce43\"",
     "description": "Median Monthly Basic Pay and Allowance of Time-Rate Workers on Full-Time Basis by Industry, 2014 to 2022",
     "warnings": [],
     "encoding": "ascii",

@@ -1,5 +1,6 @@
 import os
-
+from llama_index.core.llms import ChatMessage
+from typing import List
 from pathlib import Path
 from dotenv import load_dotenv
 from llama_index.core import VectorStoreIndex, StorageContext
@@ -48,19 +49,23 @@ class CSVHandler:
         return ','  # Default to comma if no other delimiter is found
 
     def read_file_with_description(self, file_path: str, encoding: str, delimiter: str) -> Tuple[str, str, pd.DataFrame]:
-        """Read CSV file, extract the description from the first row, and a link from the second row."""
-        # Open the file
-        with open(file_path, 'r', encoding=encoding) as file:
-            # Read the first line as description
-            description = file.readline().strip().replace('"', '')
-            
-            # Read the second line as the link
-            # link = file.readline().strip()
-        
-        # Read the rest of the file as DataFrame, skipping the first two rows
-        df = pd.read_csv(file_path, encoding=encoding, sep=delimiter, skiprows=2, on_bad_lines='warn')
-        
-        return description, df
+        try:
+            with open(file_path, 'r', encoding=encoding) as file:
+                lines = file.readlines()
+                if len(lines) < 3:  # Need at least description, link, and header
+                    raise ValueError("File must have at least 3 lines")
+                description = lines[0].strip().replace('"', '')
+                link = lines[1].strip()
+                
+            chunks = []
+            for chunk in pd.read_csv(file_path, encoding=encoding, sep=delimiter, 
+                                skiprows=2, chunksize=10000):
+                chunks.append(chunk)
+            df = pd.concat(chunks, ignore_index=True)
+            return description, link, df
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {str(e)}")
+            raise
 
 
     def clean_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -183,7 +188,7 @@ def process_csv_files(file_paths: List[str]) -> List[Document]:
             logger.info(f"Processing {file_path} with encoding {encoding} and delimiter {delimiter}")
             
             # Read the CSV file with description
-            description, df = csv_handler.read_file_with_description(file_path, encoding, delimiter)
+            description, link, df = csv_handler.read_file_with_description(file_path, encoding, delimiter)
             
             # Clean and process the data
             df = csv_handler.clean_column_names(df)
@@ -205,6 +210,7 @@ def process_csv_files(file_paths: List[str]) -> List[Document]:
                 "num_rows": len(df),
                 "num_columns": len(df.columns),
                 "column_names": list(df.columns),
+                "link": link
             }
             
             # Save detailed metadata to a JSON file
@@ -235,6 +241,7 @@ def process_csv_files(file_paths: List[str]) -> List[Document]:
 
 
 
+
 # Main execution
 
 
@@ -242,8 +249,6 @@ def process_csv_files(file_paths: List[str]) -> List[Document]:
 
 def main():
     load_dotenv()
-    
-    
     
     api_key = os.getenv("GROQ_API_KEY") 
     llm = Groq(model="llama3-70b-8192", api_key=api_key)
@@ -253,7 +258,7 @@ def main():
     # cache_folder = os.path.join(os.getcwd(), "cache")
     # revision = "main"
     # token = os.getenv("HF_TOKEN")  # Optional: if you have a Hugging Face token
-    # embed_model = Settings.embed_model = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-base-en")
+    # Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
 
     # Settings.embed_model = embed_model
@@ -300,10 +305,7 @@ def main():
         
         # Create index 
         
-        index = VectorStoreIndex.from_documents(
-    documents, 
-    embed_model=embed_model
-)
+        index = VectorStoreIndex.from_documents(documents)
         # store it for later
         index.storage_context.persist(persist_dir=PERSIST_DIR)
 
@@ -313,13 +315,23 @@ def main():
         index = load_index_from_storage(storage_context)
    
     # Create query engine 
-    query_engine = index.as_query_engine()
-
+    
+    query_engine = index.as_query_engine(
+        similarity_top_k=int(os.getenv("SIMILARITY_TOP_K", "3")),
+        response_mode=os.getenv("RESPONSE_MODE", "compact")
+    )
     while True:
-        res = input("\nEnter your query (or 'quit' to exit): ")
-        if res.lower() == 'quit':
-            break
-        response = query_engine.query(res)
-        print("\nResponse:", response)
+        try:
+            res = input("\nEnter your query (or 'quit' to exit): ")
+            if res.lower() == 'quit':
+                break
+            if not res.strip():
+                print("Please enter a valid query")
+                continue
+            response = query_engine.query(res)
+            print("\nResponse:", response)
+        except Exception as e:
+            logger.error(f"Error processing query: {str(e)}")
+            print("An error occurred while processing your query. Please try again.")
 if __name__ == "__main__":        
     main()

@@ -1,5 +1,6 @@
 {
     "source": "data\\WorkdaysLostInAgricultural2013.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OID/3001B3GI050.px/?rxid=6c884b7d-8541-43da-b80e-9f99195fb610\"",
     "description": "Cases of Occupational Injuries With Workdays Lost in Agricultural and Non-Agricultural Establishments Employing 20 or More Workers by Industry Group and Major Occupation Group, Philippines: 2013",
     "warnings": [],
     "encoding": "ascii",

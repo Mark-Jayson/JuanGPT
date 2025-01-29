@@ -1,5 +1,6 @@
 {
     "source": "data\\EstablishmentsWithCBAByIndustry2014To2022.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/1001B3GU010.px/table/tableViewLayout1/?rxid=fdd19b93-a73f-442b-aa09-ebbd95a7dfa4\"",
     "description": "Number and Proportion of Establishments Employing 20 or More Workers With Union, Collective Bargaining Agreement (CBA) and Labor Management Council (LMC) by Major Industry Group, Philippines: June 2014 to August 2022",
     "warnings": [],
     "encoding": "ascii",

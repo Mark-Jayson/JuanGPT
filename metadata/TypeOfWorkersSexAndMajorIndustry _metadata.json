@@ -1,5 +1,6 @@
 {
     "source": "data\\TypeOfWorkersSexAndMajorIndustry .csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__ESGW/1001B3GE010.px/table/tableViewLayout1/?rxid=0ec582ae-b7c4-4c2a-b388-da8afdf16e38\"",
     "description": "Total Number of Persons Engaged in Establishments with 20 or More Workers by Type of Workers, Sex and Major Industry Group, Philippines: June 2014 to August 2022",
     "warnings": [],
     "encoding": "ascii",

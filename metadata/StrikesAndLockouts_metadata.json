@@ -1,5 +1,6 @@
 {
     "source": "data\\StrikesAndLockouts.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E11/0983K3E1105.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Strikes and Lockouts/Rates of Days Not Worked by Branch of Economic Activity",
     "warnings": [],
     "encoding": "ascii",

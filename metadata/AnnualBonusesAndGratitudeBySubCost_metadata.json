@@ -1,5 +1,6 @@
 {
     "source": "data\\AnnualBonusesAndGratitudeBySubCost.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__LCE/5001B3GL090.px/table/tableViewLayout1/?rxid=4e413793-575c-4684-bf7d-e3addfe93cea\"",
     "description": "Annual Bonuses and Gratuities Per Employee in Establishments Employing 20 or More Workers by Industry Group and Sub-Cost Component, Philippines: 2013-2019",
     "warnings": [],
     "encoding": "ascii",

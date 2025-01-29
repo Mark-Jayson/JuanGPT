@@ -1,5 +1,6 @@
 {
     "source": "data\\AverageByCategoryOfEmployees.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E3/0343K3E3060.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Average Real Daily Basic Pay by Category of Employees",
     "warnings": [],
     "encoding": "ascii",

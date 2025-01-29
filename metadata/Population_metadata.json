@@ -1,5 +1,6 @@
 {
     "source": "data\\Population.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO/0011A6DPHH0.px/table/tableViewLayout1/?rxid=4bef55ae-6979-4e42-b91c-a09cdad01a99\"",
     "description": "Total Population, Household Population, and Number of Households by Region and Province/Highly Urbanized City: Philippines, 2020",
     "warnings": [
         "Columns with >50% missing values: ['household_population', 'and_number_of_households:_philippines', '2020']"

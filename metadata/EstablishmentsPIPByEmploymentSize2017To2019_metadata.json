@@ -1,5 +1,6 @@
 {
     "source": "data\\EstablishmentsPIPByEmploymentSize2017To2019.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__PIGP/1501B3GP020.px/table/tableViewLayout1/?rxid=159136c6-7169-401d-a91c-8c6ecc7b757e\"",
     "description": "Number of Establishments Employing 20 or More Workers With PIPs by Employment Size and Major Industry Group, Philippines: 2017 - 2019",
     "warnings": [],
     "encoding": "ascii",

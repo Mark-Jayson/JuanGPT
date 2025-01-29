@@ -1,5 +1,6 @@
 {
     "source": "data\\EconomicallyInactivePersons.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E5/0513K3F5010.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Economically Inactive Persons Due to Household/Family Duties",
     "warnings": [],
     "encoding": "ascii",

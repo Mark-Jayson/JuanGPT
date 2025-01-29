@@ -1,5 +1,6 @@
 {
     "source": "data\\AnnualMajorIndustry2021.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__TOW/7001B3GT110.px/table/tableViewLayout1/?rxid=e4678445-bf07-4a64-9700-2756983b560d\"",
     "description": "Annual Training Cost by Type of Workers and Major Industry Group, Philippines: 2021",
     "warnings": [],
     "encoding": "ascii",

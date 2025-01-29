@@ -1,38 +1,31 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from pathlib import Path
 import os
-import json
-import chardet
-import logging
-import pandas as pd
-import numpy as np
-from typing import List, Optional, Tuple
+from pathlib import Path
 from dotenv import load_dotenv
-from llama_index.embeddings.openai import OpenAIEmbedding
-from llama_index.core import (
-    VectorStoreIndex,
-    Document,
-    StorageContext,
-    ServiceContext,
-    load_index_from_storage,
-)
-from llama_index.core import Settings
+from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.llms.groq import Groq
-from sentence_transformers import SentenceTransformer
+from llama_index.core import Settings
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from typing import Optional, List
+import logging
 import json
+from utils import CSVHandler, process_csv_files, create_or_load_index, update_index
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Load environment variables
+load_dotenv()
+
 # Initialize FastAPI app
 app = FastAPI()
 
-# Configure CORS
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -41,203 +34,136 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# Mount static files - Using absolute path
+static_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "static")
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
-class CSVHandler:
-    def __init__(self):
-        self.supported_encodings = ['utf-8', 'latin1', 'utf-16', 'ascii', 'iso-8859-1']
-        self.possible_delimiters = [';', ',', '\t', '|']
+# Initialize model and configurations
+PERSIST_DIR = "index_storage"
+DATA_DIR = "data"
 
-    def detect_encoding(self, file_path: str) -> str:
-        """Detect the file encoding."""
-        with open(file_path, 'rb') as file:
-            raw_data = file.read()
-            result = chardet.detect(raw_data)
-            return result['encoding']
-
-    def detect_delimiter(self, file_path: str, encoding: str) -> str:
-        """Detect the CSV delimiter."""
-        with open(file_path, 'r', encoding=encoding) as file:
-            header = file.readline()
-            for delimiter in self.possible_delimiters:
-                if delimiter in header:
-                    return delimiter
-        return ','
-
-    def read_file_with_description(self, file_path: str, encoding: str, delimiter: str) -> Tuple[str, str, pd.DataFrame]:
-        """Read CSV file and extract description."""
-        with open(file_path, 'r', encoding=encoding) as file:
-            description = file.readline().strip().replace('"', '')
-            link = file.readline().strip().replace('"', '')
+def initialize_model():
+    try:
+        # Initialize Groq LLM with the model from oldmainGroq
+        api_key = os.getenv("GROQ_API_KEY")
+        llm = Groq(model="llama3-70b-8192", api_key=api_key)
+        Settings.llm = llm
         
-        df = pd.read_csv(file_path, encoding=encoding, sep=delimiter, skiprows=2, on_bad_lines='warn')
-        return description, link, df
-
-    def clean_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Clean and standardize column names."""
-        df.columns = df.columns.map(lambda x: str(x)
-            .strip()
-            .lower()
-            .replace('"', '')
-            .replace("'", "")
-            .replace(" ", "_")
-            .replace("-", "_")
-            .replace(r"[^\w\s]", "")
+        # Set embedding model from oldmainGroq
+        Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-base-en-v1.5")
+        
+        # Create or load the index
+        index = create_or_load_index(DATA_DIR, PERSIST_DIR)
+        
+        # Create query engine with specific configurations
+        query_engine = index.as_query_engine(
+            similarity_top_k=int(os.getenv("SIMILARITY_TOP_K", "3")),
+            response_mode=os.getenv("RESPONSE_MODE", "compact")
         )
-        return df
-
-    def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Clean data in all columns."""
-        for col in df.select_dtypes(include=['object']).columns:
-            df[col] = df[col].apply(lambda x: self._clean_string(x))
-            try:
-                numeric_conversion = pd.to_numeric(df[col], errors='coerce')
-                if numeric_conversion.notna().all():
-                    df[col] = numeric_conversion
-            except:
-                pass
-
-        numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
-        for col in numeric_cols:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
-
-        df = self._convert_date_columns(df)
-        return df
-
-    def _clean_string(self, value) -> str:
-        """Clean individual string values."""
-        if pd.isna(value):
-            return np.nan
-        try:
-            value = str(value).strip().replace('"', '').replace('\n', ' ').replace('\r', ' ')
-            return ' '.join(value.split()) if value else np.nan
-        except:
-            return np.nan
-
-    def _convert_date_columns(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Convert date-like columns to datetime."""
-        for col in df.columns:
-            if df[col].dtype == 'object':
-                try:
-                    date_series = pd.to_datetime(df[col], errors='coerce')
-                    if date_series.notna().sum() > 0.5 * len(date_series):
-                        df[col] = date_series
-                except:
-                    continue
-        return df
-
-    def handle_missing_values(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Handle missing values in the DataFrame."""
-        numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
-        for col in numeric_cols:
-            df[col] = df[col].fillna(df[col].median())
-
-        categorical_cols = df.select_dtypes(include=['object']).columns
-        for col in categorical_cols:
-            df[col] = df[col].fillna(df[col].mode().iloc[0] if not df[col].mode().empty else 'Unknown')
-
-        return df
-
-def process_csv_files(file_paths: List[str]) -> List[Document]:
-    """Process multiple CSV files and create documents."""
-    csv_handler = CSVHandler()
-    documents = []
-    metadata_dir = "metadata"
-    os.makedirs(metadata_dir, exist_ok=True)
-
-    for file_path in file_paths:
-        try:
-            encoding = csv_handler.detect_encoding(file_path)
-            delimiter = csv_handler.detect_delimiter(file_path, encoding)
-            
-            description, link, df = csv_handler.read_file_with_description(file_path, encoding, delimiter)
-            
-            df = csv_handler.clean_column_names(df)
-            df = csv_handler.clean_data(df)
-            df = csv_handler.handle_missing_values(df)
-            
-            detailed_metadata = {
-                "source": file_path,
-                "description": description,
-                "encoding": encoding,
-                "delimiter": delimiter,
-                "num_rows": len(df),
-                "num_columns": len(df.columns),
-                "column_names": list(df.columns),
-                "link": link
-            }
-            
-            metadata_filename = os.path.join(metadata_dir, f"{Path(file_path).stem}_metadata.json")
-            with open(metadata_filename, "w") as metadata_file:
-                json.dump(detailed_metadata, metadata_file, indent=4)
-            
-            text = f"File Description: {description}\n\nData:\n{df.to_string(index=False)}"
-            document = Document(
-                text=text,
-                metadata={
-                    "source": file_path,
-                    "description": description[:200],
-                    "metadata_reference": metadata_filename,
-                    "link": link
-                }
-            )
-            documents.append(document)
-            logger.info(f"Successfully processed {file_path}")
-            
-        except Exception as e:
-            logger.error(f"Error processing {file_path}: {str(e)}")
-            continue
-
-    return documents
-
-# Initialize LlamaIndex components
-def initialize_index():
-    load_dotenv()
-    PERSIST_DIR = "./storage"
-    
-    embed_model = OpenAIEmbedding()
-    
-    api_key = os.getenv("GROQ_API_KEY") 
-    llm = Groq(model="llama3-70b-8192", api_key=api_key)
-    
-    # Set global settings
-    Settings.llm = llm
-    Settings.embed_model = embed_model
-    
-    if not os.path.exists(PERSIST_DIR):
-        data_folder = "data"
-        csv_files = [os.path.join(data_folder, file) for file in os.listdir(data_folder) if file.endswith('.csv')]
-        documents = process_csv_files(csv_files) #calling the function process_csv_files to process the csv files
         
-        if documents:
-            index = VectorStoreIndex.from_documents(documents, show_progress=True)
-            index.storage_context.persist(persist_dir=PERSIST_DIR)
-        else:
-            raise Exception("No documents were successfully processed")
-    else:
-        storage_context = StorageContext.from_defaults(persist_dir=PERSIST_DIR)
-        index = load_index_from_storage(storage_context)
-    
-    return index
+        return query_engine
+    except Exception as e:
+        logger.error(f"Error initializing model: {str(e)}")
+        raise
 
-# Initialize the index and query engine
-index= initialize_index()
-query_engine = index.as_query_engine()
+# Initialize the query engine
+query_engine = initialize_model()
 
-class Query(BaseModel):
+class ChatRequest(BaseModel):
     text: str
 
-@app.post("/api/chat")
-async def chat(query: Query):
-    try:
-        response = query_engine.query(query.text)
-        return {"response": str(response)}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+class ChatResponse(BaseModel):
+    response: str
+    links: Optional[str] = None
 
 @app.get("/", response_class=HTMLResponse)
-async def root():
-    return Path("static/conversation.html").read_text()
+async def read_root():
+    html_path = os.path.join(static_dir, "index.html")
+    with open(html_path, "r", encoding="utf-8") as f:
+        return HTMLResponse(content=f.read())
 
-# Run with: uvicorn main:app --reload
+@app.get("/conversation", response_class=HTMLResponse)
+async def read_conversation():
+    html_path = os.path.join(static_dir, "conversation.html")
+    with open(html_path, "r", encoding="utf-8") as f:
+        return HTMLResponse(content=f.read())
+
+@app.get("/about", response_class=HTMLResponse)
+async def read_about():
+    html_path = os.path.join(static_dir, "about.html")
+    with open(html_path, "r", encoding="utf-8") as f:
+        return HTMLResponse(content=f.read())
+
+# API Endpoints
+@app.post("/api/chat")
+async def chat(request: ChatRequest):
+    try:
+        # Get main response from query engine
+        response = query_engine.query(request.text)
+        
+        # Get related links/sources
+        links = query_engine.query(
+            "what is the link of the datasets where you can find this information: " + 
+            request.text + " (provide only the link)"
+        )
+        
+        # Convert response to string if it's not already
+        response_text = str(response)
+        links_text = str(links) if links else None
+        
+        return ChatResponse(response=response_text, links=links_text)
+    except Exception as e:
+        logger.error(f"Error processing chat request: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/update-index")
+async def update_index_endpoint():
+    try:
+        # Update the index and reinitialize the query engine
+        update_index(DATA_DIR, PERSIST_DIR)
+        global query_engine
+        query_engine = initialize_model()
+        return {"message": "Index updated successfully"}
+    except Exception as e:
+        logger.error(f"Error updating index: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/upload-csv")
+async def upload_csv(file: UploadFile = File(...)):
+    try:
+        # Ensure data directory exists
+        os.makedirs(DATA_DIR, exist_ok=True)
+        
+        # Save uploaded file
+        file_path = os.path.join(DATA_DIR, file.filename)
+        with open(file_path, "wb") as buffer:
+            content = await file.read()
+            buffer.write(content)
+        
+        # Process the new CSV file
+        csv_handler = CSVHandler()
+        documents = process_csv_files([file_path])
+        
+        # Update the index with the new document
+        update_index(DATA_DIR, PERSIST_DIR)
+        
+        # Reinitialize query engine
+        global query_engine
+        query_engine = initialize_model()
+        
+        return {"message": f"File {file.filename} uploaded and processed successfully"}
+    except Exception as e:
+        logger.error(f"Error uploading CSV: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Static file handler
+@app.get("/static/{file_path:path}")
+async def serve_static(file_path: str):
+    full_path = os.path.join(static_dir, file_path)
+    if os.path.exists(full_path):
+        return FileResponse(full_path)
+    raise HTTPException(status_code=404, detail="File not found")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

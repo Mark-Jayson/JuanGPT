@@ -1,5 +1,6 @@
 {
     "source": "data\\VacanciesPositionAndOccupation2022.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OSS/6301B3GS095.px/table/tableViewLayout1/?rxid=8a8a8c67-d058-4943-a972-f0ab3d83f510\"",
     "description": "Number of Vacancies in Establishments Employing 20 or More Workers by Type of Position and Occupation Title,  Philippines: September 2021 to August 2022",
     "warnings": [],
     "encoding": "ascii",

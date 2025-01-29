@@ -1,5 +1,6 @@
 {
     "source": "data\\EmployedByHoursBySex2.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E4/0423K3E4020.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Employed by Hours Actually Worked per Week in Primary Job by Sex",
     "warnings": [],
     "encoding": "ascii",

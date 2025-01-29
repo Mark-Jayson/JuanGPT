@@ -1,5 +1,6 @@
 {
     "source": "data\\LaborForceData.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__LFS/0011B3ALFS0.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Labor Force Participation Rate, Employment Rate, Unemployment Rate and Underemployment Rate, Philippines: January 2005 to November 2024",
     "warnings": [],
     "encoding": "ascii",

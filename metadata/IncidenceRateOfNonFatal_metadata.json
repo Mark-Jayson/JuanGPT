@@ -1,5 +1,6 @@
 {
     "source": "data\\IncidenceRateOfNonFatal.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E9/0773K3E9020.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Incidence Rate of Non-Fatal Occupational Injuries per 100,000 Employed Persons by Branch of Economic Activity",
     "warnings": [],
     "encoding": "ascii",

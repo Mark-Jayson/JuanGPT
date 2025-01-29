@@ -1,5 +1,6 @@
 {
     "source": "data\\AverageBySexAndMajorOccupation2002.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E3/0323K3E3040.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Average Real Daily Basic Pay by Sex and Major Occupation Group (Based on 2002 PSOC)",
     "warnings": [],
     "encoding": "ascii",

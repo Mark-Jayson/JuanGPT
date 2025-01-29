@@ -1,5 +1,6 @@
 {
     "source": "data\\InfantDeathsByUsualResidence.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__DE/3071A1BVDA6.px/table/tableViewLayout1/?rxid=21cfd4f5-daa7-4747-be89-6068d4de5afd\"",
     "description": "Deaths : Number of Registered Infant Deaths by Usual Residence (Region,Province and City/Municipality) and Month of Occurrence, Philippines: 2016",
     "warnings": [],
     "encoding": "utf-8",

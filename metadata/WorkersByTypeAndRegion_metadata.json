@@ -1,5 +1,6 @@
 {
     "source": "data\\WorkersByTypeAndRegion.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__ESGW/4251B3GE071.px/table/tableViewLayout1/?rxid=889609b2-85a3-44b2-a676-89a8a2b6bec9\"",
     "description": "Number of Commission and Output-Rated Workers in Establishments with 20 or More Workers by Type and Region: August 2022",
     "warnings": [],
     "encoding": "ascii",

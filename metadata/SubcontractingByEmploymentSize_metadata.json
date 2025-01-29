@@ -1,5 +1,6 @@
 {
     "source": "data\\SubcontractingByEmploymentSize.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__ESGW/8501B3GE160.px/table/tableViewLayout1/?rxid=35bcaecd-93bf-46d3-bfca-3693580d69a7\"",
     "description": "Number and Percent Share of Establishments with 20 or More Workers Engaged in Subcontracting by Employment Size, Philippines: June 2014 to August 2022",
     "warnings": [
         "Column employment_size;2014_total_establishments;2014_establishments_resorting_to_subcontracting;2014_percent_to_total;2016_total_establishments;2016_establishments_resorting_to_subcontracting;2016_percent_to_total;2018_total_establishments;2018_establishments_resorting_to_subcontracting;2018_percent_to_total;2020_total_establishments;2020_establishments_resorting_to_subcontracting;2020_percent_to_total;2022_total_establishments;2022_establishments_resorting_to_subcontracting;2022_percent_to_total might be better as categorical"

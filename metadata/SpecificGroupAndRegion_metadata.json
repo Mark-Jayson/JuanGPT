@@ -1,5 +1,6 @@
 {
     "source": "data\\SpecificGroupAndRegion.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__ESGW/3251B3GE051.px/table/tableViewLayout1/?rxid=889609b2-85a3-44b2-a676-89a8a2b6bec9\"",
     "description": "Total Employment of Establishments with 20 or More Workers by Specific Group and Region: August 2022",
     "warnings": [],
     "encoding": "utf-8",

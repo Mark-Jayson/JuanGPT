@@ -1,5 +1,6 @@
 {
     "source": "data\\EstablishmentsByEmploymentSize.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__TOW/1501B3GT020.px/table/tableViewLayout1/?rxid=7b44c05e-6016-466f-8f90-399d7dfa9308\"",
     "description": "Number of Establishments with 20 or More Workers that Provided Job-Related Trainings by Employment Size, Philippines: 2013 to 2021",
     "warnings": [
         "Column major_industry_group;2013_total_establishments;2013_establishments_providing_job_related_trainings;2015_total_establishments;2015_establishments_providing_job_related_trainings;2017_total_establishments;2017_establishments_providing_job_related_trainings;2019_total_establishments;2019_establishments_providing_job_related_trainings;2021_total_establishments;2021_establishments_providing_job_related_trainings might be better as categorical"

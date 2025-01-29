@@ -1,5 +1,6 @@
 {
     "source": "data\\PercentShareTotalWage.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E7/0603K3F7020.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Percent Share of Employees in Precarious Work to Total Wage and Salary Workers by Sex,  Branch of Economic Activity and  Category of Employees  (Household survey data)",
     "warnings": [],
     "encoding": "ascii",

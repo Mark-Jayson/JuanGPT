@@ -1,5 +1,6 @@
 {
     "source": "data\\FemaleShareSenior2012.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E8/0723K3E8070.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Female Share of Employment in Senior and Middle Management (Based on 2012 PSOC)",
     "warnings": [
         "Column indicator;2016;2017;2018 might be better as categorical"

@@ -1,5 +1,6 @@
 {
     "source": "data\\NumberOfDeathsAgeGroupAndSex.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__DE/3031A1BVDA2.px/?rxid=ca21cbaf-bd6d-4c52-8604-d3999ce4decc\"",
     "description": "Deaths : Number of Deaths by Usual Residence (Region, Province and City/Municipality), Age Group and Sex: Philippines, 2016",
     "warnings": [],
     "encoding": "utf-8",

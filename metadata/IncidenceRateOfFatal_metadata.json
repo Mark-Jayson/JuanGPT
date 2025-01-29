@@ -1,5 +1,6 @@
 {
     "source": "data\\IncidenceRateOfFatal.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E9/0753K3E9010.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Incidence rate of fatal occupational injuries per 100,000 employed persons by branch of economic activity",
     "warnings": [],
     "encoding": "ascii",

@@ -1,5 +1,6 @@
 {
     "source": "data\\FrequencyRatesIncapacityForWork2013To2021.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OID/1501B3GI020.px/table/tableViewLayout1/?rxid=eca9b9b4-2d32-429c-9bb1-f8c3b9a56a5c\"",
     "description": "Frequency Rates of Cases of Occupational Injuries With Workdays Lost in Establishments Employing 20 or More Workers by Industry Group and Incapacity for Work, Philippines: 2013-2021",
     "warnings": [],
     "encoding": "ascii",

@@ -1,5 +1,6 @@
 {
     "source": "data\\PPIByTypeOfProductivityTechnique2015.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__PIGP/3001B3GP053.px/table/tableViewLayout1/?rxid=445265cc-dbdb-4720-8a25-699cc800758c\"",
     "description": "Number of Productivity Programs Implemented in Establishments Employing 20 or More Workers by Type of Productivity Technique/Tool Used and Major Industry Group, Philippines: 2015",
     "warnings": [],
     "encoding": "ascii",

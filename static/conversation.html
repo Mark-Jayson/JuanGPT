@@ -3,12 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JuanGPT Chat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>JuanGPT</title>
+    <link rel="icon" href="/static/assets/Logo Blue.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
     <style>
         .chat-container {
             height: calc(100vh - 180px);
@@ -88,12 +100,12 @@
             margin-bottom: 5px;
         }
 
-        .explore-dataset a {
+        b .explore-dataset a {
             color: #0066d3;
             text-decoration: none;
         }
 
-        .input-container {
+        .user-input {
             position: fixed;
             bottom: 20px;
             left: 50%;
@@ -105,11 +117,28 @@
             z-index: 900;
         }
 
+        .user-input {
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            gap: 10px;
+        }
 
+        .user-input input {
+            flex: 1;
+        }
 
+        .chat-container {
+            display: none;
+        }
+
+        .user-input button {
+            padding: 0;
+            margin: 0;
+        }
 
         @media (max-width: 768px) {
-            .input-container {
+            .user-input {
                 width: 90%;
             }
 
@@ -123,85 +152,83 @@
                 height: calc(100vh - 160px);
             }
 
-            .input-container {
+            .user-input {
                 width: 95%;
                 bottom: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .user-input {
+                width: calc(100vw - 25vw);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .user-input {
+                width: calc(100vw - 20vw);
             }
         }
     </style>
 </head>
 
 <body>
-    <button id="toggle-button" class="toggle-button btn btn-link text-white">
-        <i class="fas fa-bars"></i>
-    </button>
 
 
 
-    <div id="side-panel" class="position-fixed top-0 start-0 h-100 bg-dark text-white transition-all duration-300 z-50">
 
+    <div id="side-panel" class="position-fixed top-0 start-0 h-100 text-white transition-all duration-300 z-50">
+        <button id="toggle-button" class="btn btn-link text-white px-4 py-3">
+            <i class="fas fa-bars"></i>
+        </button>
 
-        <div id="expanded-content" class=" p-3 d-none">
-            <button class="btn btn-link text-white p-2">
-                <i class="fas fa-plus"></i> New Chat
+        <div id="expanded-content" class="p-3 d-none">
+            <button class="chat-btn text-light p-2">
+                <i class="fas fa-plus me-2"></i> New Chat
             </button>
 
-            <h2 class="text-lg font-semibold mb-2">Recent</h2>
-            <div class="text-gray-200">Recent chats will appear here</div>
-            <div class="text-gray-200">Recent chats will appear here</div>
-            <div class="text-gray-200">Recent chats will appear here</div>
+            <div class="recent px-3 py-2 mt-4">
+                <h5 class="text-lg text-light">Recent</h5>
+            </div>
+            <div class="recent-chat px-3 py-2">
+                <div class="chat-item d-flex justify-content-between align-items-center">
+                    <div class="chat-title text-light">Recent chats will appear here</div>
+                    <button class="delete-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="position-absolute bottom-0 start-0 w-100 p-3">
-            <button class="btn btn-link text-white">
-                <row><i class="fas fa-info-circle"></i><label class="label d-none">JuanGPT</label></row>
-            </button><br>
-            <button class="btn btn-link text-white">
-                <i class="fas fa-cog"></i> <label class="label d-none">Settings</label>
-            </button>
+            <a href="/about" target="_blank"
+                class="btn hover-effect btn-link text-white text-decoration-none d-flex justify-content-center align-items-center mb-2 w-100">
+                <i class="fas fa-info-circle"></i>
+                <label class="label ms-2 d-none">JuanGPT</label>
+            </a>
         </div>
+
     </div>
 
     <div id="main-content"
         class="main-content position-fixed top-0 end-0 h-100 bg-white text-white transition-all duration-300 z-50">
-        <div class="user-input">
+        <div class="user-input" id = "user-input">
             <input type="text" class="form-control border-0" id="chat" placeholder="Message JuanGPT">
             <button class="btn btn-link">
                 <img src="/static/assets/Paper Plane.png" width="30" height="30" alt="Send">
             </button>
         </div>
-        <nav class="navbar navbar-light">
 
-            <a class="navbar-brand" href="#">
-                <img src="/static/assets/Logo White.png" alt="LOGO" class="logo d-flex justify-content-start">
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand" href="/">
+                <img src="/static/assets/Logo White.png" alt="JuanGPTLogo" class="logo d-flex justify-content-start">
             </a>
-            <div class="d-flex justify-content-end align-items-center gap-2">
-                <a href="login.html" class="btn btn-warning rounded-5">Log In</a> <br>
-                <a href="signup.html" class="btn log btn-outline-warning rounded-5">Sign Up</a>
-            </div>
         </nav>
 
         <!-- Existing navbar and side panel code remains the same -->
 
         <div class="chat-container">
-            <div class="message bot-message">
-                <div class="avatar">J</div>
-                <div class="message-content">
-                    <div class="message-header">
-                        <h5>JuanGPT</h5>
-                    </div>
-                    <div class="message-text">
-                        <p>60,336 families</p>
-                        <p>Based on the record of PSA on number of households of some highly urbanized cities in the
-                            Philippines, Catanduanes, a city in the Bicol Region has 60,336 household or families.</p>
-                        <div class="explore-dataset">
-                            <h6>Explore dataset:</h6>
-                            <a href="#">Number of Households by Type of Building, Tenure Status of the Housing Unit/Lot,
-                                and Province/Highly Urbanized City: Philippines, 2020</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <!-- Add more message elements as needed -->
         </div>
     </div>
@@ -209,45 +236,34 @@
 
 
     <script>
-        // Add message to chat
-        function addMessage(message, isUser = false) {
-        const chatContainer = document.querySelector('.chat-container');
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-        
-        const avatar = document.createElement('div');
-        avatar.className = 'avatar';
-        avatar.textContent = isUser ? 'U' : 'J';
-
-        const content = document.createElement('div');
-        content.className = 'message-content';
-        content.innerHTML = `
-            <div class="message-header">
-                <h5>${isUser ? 'User' : 'JuanGPT'}</h5>
-            </div>
-            <div class="message-text">
-                <p>${message}</p>
-            </div>
-        `;
-
-        messageDiv.appendChild(avatar);
-        messageDiv.appendChild(content);
-        chatContainer.appendChild(messageDiv);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-        
-        return messageDiv; // Return the message element for potential removal
-    }
-
-        // Handle message input
-        const input = document.querySelector('.user-input input');
-        const sendButton = document.querySelector('.user-input button');
-
-        async function sendMessage() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize UI elements
+            const sidePanel = document.getElementById('side-panel');
+            const mainContent = document.getElementById('main-content');
+            const userInput = document.getElementById('user-input');
+            const toggleButton = document.getElementById('toggle-button');
+            const expandedContent = document.getElementById('expanded-content');
+            const chatContainer = document.querySelector('.chat-container');
             const input = document.querySelector('.user-input input');
-            const message = input.value.trim();
+            const sendButton = document.querySelector('.user-input button');
+            const labels = document.getElementsByClassName('label');
+            let isExpanded = false;
 
-            if (message) {
-                // Add user message to chat
+            // Show chat container by default
+            chatContainer.style.display = 'block';
+
+            // Check for pending question from index.html
+            const pendingQuestion = localStorage.getItem('pendingQuestion');
+            if (pendingQuestion) {
+                localStorage.removeItem('pendingQuestion');
+                handleMessage(pendingQuestion);
+            }
+
+            // Message handling functions
+            async function handleMessage(message) {
+                if (!message.trim()) return;
+                
+                // Add user message and clear input
                 addMessage(message, true);
                 input.value = '';
 
@@ -269,109 +285,106 @@
                     }
 
                     const data = await response.json();
-
-                    // Remove loading message
                     loadingMessage.remove();
 
-                    // Add bot response to chat
-                    addMessage(data.response, false);
+                    // Format and display response
+                    let messageContent = data.response;
+                    if (data.links) {
+                        messageContent += `
+                            <div class="explore-dataset">
+                                <h6>Explore dataset:</h6>
+                                <a href="${data.links}" target="_blank">View Source Dataset</a>
+                            </div>`;
+                    }
 
+                    addMessage(messageContent, false);
                 } catch (error) {
                     console.error('Error:', error);
                     addMessage('Sorry, I encountered an error while processing your request.', false);
                 }
             }
-        }
 
-        sendButton.addEventListener('click', sendMessage);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
+            function addMessage(message, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+
+                const avatar = document.createElement('div');
+                avatar.className = 'avatar';
+                avatar.textContent = isUser ? 'U' : 'J';
+
+                const content = document.createElement('div');
+                content.className = 'message-content';
+                content.innerHTML = `
+                    <div class="message-header">
+                        <h5>${isUser ? 'You' : 'JuanGPT'}</h5>
+                    </div>
+                    <div class="message-text">
+                        <p>${message}</p>
+                    </div>
+                `;
+
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(content);
+                chatContainer.appendChild(messageDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                return messageDiv;
             }
-        });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const sidePanel = document.getElementById('side-panel');
-            const mainContent = document.getElementById('main-content');
-            const toggleButton = document.getElementById('toggle-button');
-            const expandedContent = document.getElementById('expanded-content');
-            const label1 = document.getElementsByClassName('label')[0];
-            const label2 = document.getElementsByClassName('label')[1];
-            const smallbutton = document.getElementById('smallbutton');
-            let isExpanded = false;
-
-            toggleButton.addEventListener('click', function () {
-                isExpanded = !isExpanded;
-                if (window.innerWidth <= 576) {
-                    if (isExpanded) {
-
-                        sidePanel.style.width = '100vw';
-                        sidePanel.style.display = 'block';
-                        mainContent.style.display = 'none';
-                        expandedContent.classList.remove('d-none');
-                        label1.classList.remove('d-none');
-                        label1.classList.add('d-block');
-                        label2.classList.remove('d-none');
-                        label2.classList.add('d-block');
-
-                    } else {
-                        sidePanel.style.display = 'none';
-                        mainContent.style.display = 'block';
-                        mainContent.style.width = '100vw';
-                        sidePanel.style.width = 'none';
-                    }
-
-
-                } else {
-                    if (isExpanded) {
-                        sidePanel.style.width = '25vw';
-                        // sidePanel.classList.add('col-3');
-                        mainContent.style.width = '75vw';
-
-                        expandedContent.classList.remove('d-none');
-                        label1.classList.remove('d-none');
-                        label1.classList.add('d-block');
-                        label2.classList.remove('d-none');
-                        label2.classList.add('d-block');
-
-
-                    } else {
-                        sidePanel.style.width = '5vw';
-                        mainContent.style.width = '95vw';
-                        expandedContent.classList.add('d-none');
-                        label1.classList.add('d-none');
-                        label1.classList.remove('d-block');
-                        label2.classList.add('d-none');
-                        label2.classList.remove('d-block');
-                    }
+            // Event listeners
+            sendButton.addEventListener('click', () => handleMessage(input.value));
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleMessage(input.value);
                 }
             });
 
-            window.addEventListener('resize', function () {
-                const sidePanel = document.getElementById('side-panel');
-                const mainContent = document.getElementById('main-content');
-
+            // Side panel toggle functionality
+            toggleButton.addEventListener('click', function() {
+                isExpanded = !isExpanded;
+                
                 if (window.innerWidth <= 576) {
+                    // Mobile layout
+                    sidePanel.style.display = isExpanded ? 'block' : 'none';
+                    mainContent.style.display = isExpanded ? 'none' : 'block';
+                    userInput.style.display = isExpanded ? 'none' : 'block';
+                    mainContent.style.width = '100vw';
+                } else {
+                    // Desktop layout
+                    sidePanel.style.width = isExpanded ? '25vw' : '5vw';
+                    mainContent.style.width = isExpanded ? '75vw' : '95vw';
+                    userInput.style.width = isExpanded ? '50vw' : '70vw';
+                }
+
+                // Toggle expanded content and labels
+                expandedContent.classList.toggle('d-none', !isExpanded);
+                Array.from(labels).forEach(label => {
+                    label.classList.toggle('d-none', !isExpanded);
+                    label.classList.toggle('d-block', isExpanded);
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 576) {
+                    // Reset to mobile layout
                     sidePanel.style.display = 'none';
                     mainContent.style.display = 'block';
                     mainContent.style.width = '100vw';
-                    sidePanel.style.width = 'none';
-                }
-                else {
+                } else {
+                    // Reset to desktop layout
                     sidePanel.style.width = '5vw';
                     mainContent.style.width = '95vw';
-                    mainContent.style.display = 'block';
-                    expandedContent.classList.add('d-none');
                     sidePanel.style.display = 'block';
-                    label1.classList.add('d-none');
-                    label1.classList.remove('d-block');
-                    label2.classList.add('d-none');
-                    label2.classList.remove('d-block');
-
-
+                    expandedContent.classList.add('d-none');
+                    Array.from(labels).forEach(label => {
+                        label.classList.add('d-none');
+                        label.classList.remove('d-block');
+                    });
                 }
+                isExpanded = false;
             });
-
         });
     </script>
 </body>

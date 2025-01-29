@@ -1,5 +1,6 @@
 {
     "source": "data\\EstablishmentsNumberOfWorkersInjured2013To2024.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OID/6001B3GI110.px/table/tableViewLayout1/?rxid=6c884b7d-8541-43da-b80e-9f99195fb610\"",
     "description": "Establishments Employing 20 or More Workers With or Without Commuting Accidents, Number of Commuting Accidents and Number of Workers Injured by Industry Group, Philippines:  2013-2021",
     "warnings": [],
     "encoding": "ascii",

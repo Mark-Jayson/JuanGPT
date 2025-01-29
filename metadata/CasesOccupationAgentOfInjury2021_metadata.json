@@ -1,5 +1,6 @@
 {
     "source": "data\\CasesOccupationAgentOfInjury2021.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OID/7801B3GI200.px/table/tableViewLayout1/?rxid=6c884b7d-8541-43da-b80e-9f99195fb610\"",
     "description": "Cases of Occupational Injuries With Workdays Lost in Establishments Employing 20 or More Workers by Region and Agent of Injury, Philippines: 2013-2021",
     "warnings": [
         "Columns with >50% missing values: ['structures;2021_..prime_movers;2021_..distribution_systems;2021_..hand_tools;2021_..machines', 'equipment;2021_..conveying/_transport/_packaging_equipment_or_vehicles;2021_..materials', 'objects;2021_..chemical_substances;2021_..human', 'animals', 'plants', 'etc.']"

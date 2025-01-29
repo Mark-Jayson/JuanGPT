@@ -55,12 +55,12 @@ class CSVHandler:
             description = file.readline().strip().replace('"', '')
             
             # Read the second line as the link
-            # link = file.readline().strip()
+            link = file.readline().strip()
         
         # Read the rest of the file as DataFrame, skipping the first two rows
         df = pd.read_csv(file_path, encoding=encoding, sep=delimiter, skiprows=2, on_bad_lines='warn')
         
-        return description, df
+        return description, link, df
 
 
     def clean_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -183,7 +183,7 @@ def process_csv_files(file_paths: List[str]) -> List[Document]:
             logger.info(f"Processing {file_path} with encoding {encoding} and delimiter {delimiter}")
             
             # Read the CSV file with description
-            description, df = csv_handler.read_file_with_description(file_path, encoding, delimiter)
+            description, link, df = csv_handler.read_file_with_description(file_path, encoding, delimiter)
             
             # Clean and process the data
             df = csv_handler.clean_column_names(df)
@@ -205,6 +205,7 @@ def process_csv_files(file_paths: List[str]) -> List[Document]:
                 "num_rows": len(df),
                 "num_columns": len(df.columns),
                 "column_names": list(df.columns),
+                "link": link
             }
             
             # Save detailed metadata to a JSON file
@@ -258,7 +259,7 @@ def main():
 
 
     # Settings.embed_model = embed_model
-    data_folder = "data"
+    data_folder = "data" 
     csv_files = [os.path.join(data_folder, file) for file in os.listdir(data_folder) if os.path.isfile(os.path.join(data_folder, file))]
     documents = process_csv_files(csv_files)
     index = VectorStoreIndex.from_documents(documents)

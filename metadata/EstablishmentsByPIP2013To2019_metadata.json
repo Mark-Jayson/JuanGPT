@@ -1,5 +1,6 @@
 {
     "source": "data\\EstablishmentsByPIP2013To2019.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__PIGP/1001B3GP010.px/table/tableViewLayout1/?rxid=f46464c9-6e01-4f80-a79a-affc44d5471b\"",
     "description": "Number of Establishments Employing 20 or More Workers by Productivity Improvement Programs (PIPs) and Major Industry Group, Philippines: 2013 - 2019",
     "warnings": [],
     "encoding": "ascii",

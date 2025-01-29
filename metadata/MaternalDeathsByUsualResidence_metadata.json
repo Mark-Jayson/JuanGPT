@@ -1,5 +1,6 @@
 {
     "source": "data\\MaternalDeathsByUsualResidence.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__DE/3111A1BVDB0.px/table/tableViewLayout1/?rxid=21cfd4f5-daa7-4747-be89-6068d4de5afd\"",
     "description": "Deaths : Number of Registered Maternal Deaths by Usual Residence (Region/Province/City/Municipality) and Age of Mother, Philippines: 2016",
     "warnings": [],
     "encoding": "utf-8",

@@ -1,5 +1,6 @@
 {
     "source": "data\\AverageRealDailySeasonal.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E7/0623K3F7040.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Average Real Daily Basic Pay of Short-term, Seasonal or Casual workers by Sex, by Branch of Economic Activity and by Category of Employees (Household survey data)",
     "warnings": [],
     "encoding": "ascii",

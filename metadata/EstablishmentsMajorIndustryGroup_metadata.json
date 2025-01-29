@@ -1,5 +1,6 @@
 {
     "source": "data\\EstablishmentsMajorIndustryGroup.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__TOW/1001B3GT010.px/table/tableViewLayout1/?rxid=4fbc51cc-87ce-435d-b8c3-344a80418f75\"",
     "description": "Number of Establishments with 20 or More Workers that Provided Job-Related Trainings by Major Industry Group, Philippines: 2021",
     "warnings": [],
     "encoding": "ascii",

@@ -1,5 +1,6 @@
 {
     "source": "data\\SeverityRatesAndAverage2021.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OID/6801B3GI150.px/table/tableViewLayout1/?rxid=6c884b7d-8541-43da-b80e-9f99195fb610\"",
     "description": "Severity Rates and Average Workdays Lost of Cases of Occupational Injuries Resulting to Temporary Incapacity in Establishments Employing 20 or More Workers by Region, Philippines: 2021",
     "warnings": [],
     "encoding": "ascii",

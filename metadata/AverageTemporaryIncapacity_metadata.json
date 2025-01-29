@@ -1,5 +1,6 @@
 {
     "source": "data\\AverageTemporaryIncapacity.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E9/0773K3E9030.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Average Days Lost Due to Temporary Incapacity Cases",
     "warnings": [],
     "encoding": "ascii",

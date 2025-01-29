@@ -1,5 +1,6 @@
 {
     "source": "data\\PercentShareBranchOfEconomicActivity.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E3/0303K3E3020.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Percent Share of Low-paid Wage and Salary Workers to the Total Employed  Workers by Sex and Branch of Economic Activity",
     "warnings": [],
     "encoding": "ascii",

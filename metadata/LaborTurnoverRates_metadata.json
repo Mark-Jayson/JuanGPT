@@ -1,5 +1,6 @@
 {
     "source": "data\\LaborTurnoverRates.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__LTS/1001B3GM010.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Labor Turnover Rates in Establishments with 20 or More Workers by Major Industry, National Capital Region: 1st Quarter 2014 to 4th Quarter 2021",
     "warnings": [],
     "encoding": "ascii",

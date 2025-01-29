@@ -1,5 +1,6 @@
 {
     "source": "data\\VacanciesByMajorIndustryGroup.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OSS/1001B3GS010.px/table/tableViewLayout1/?rxid=8a8a8c67-d058-4943-a972-f0ab3d83f510\"",
     "description": "Total Number of Establishments with and without Vacancies by Major Industry Group, Philippines: January 2013 - June 2014 to September 2021 - August 2022",
     "warnings": [],
     "encoding": "ascii",

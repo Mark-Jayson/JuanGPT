@@ -1,5 +1,6 @@
 {
     "source": "data\\CasesOccupationTypeOfDisease2021.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OID/8001B3GI210.px/table/tableViewLayout1/?rxid=6c884b7d-8541-43da-b80e-9f99195fb610\"",
     "description": "Cases of Occupational Diseases in Establishments Employing 20 or more Workers by Region and Type of Disease, Philippines:2021",
     "warnings": [
         "Columns with >50% missing values: ['cramps', 'exhaustion;2021_..chilblain', 'frostbite', 'freezing;2021_..deafness;2021_..tuberculosis;2021_..work_related_covid_19_infection;2021_..occupational_lung_diseases;2021_..other_infections;2021_..cataract;2021_..cardiovascular_diseases;2021_..carpal_tunnel_syndrome;2021_..shoulder_tendinitis;2021_..neck_shoulder_pain;2021_..back_pain;2021_..other_work_related_musculoskeletal_diseases;2021_..work_related_mental_health_condition;2021_..other_diseases']"

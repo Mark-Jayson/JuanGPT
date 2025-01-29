@@ -1,5 +1,6 @@
 {
     "source": "data\\EmploymentctivityAndSexDistribution.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E1/0113K3F1110.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Employment by Branch of Economic Activity and Sex, % Distribution",
     "warnings": [],
     "encoding": "ascii",

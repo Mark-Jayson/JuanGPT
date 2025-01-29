@@ -1,5 +1,6 @@
 {
     "source": "data\\GrossDomesticProduct2000.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__3K__E1/0013K3F1010.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Gross Domestic Product (GDP) by Branch of Economic Activity at Constant 2000 Prices",
     "warnings": [],
     "encoding": "ascii",

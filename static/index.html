@@ -6,7 +6,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuanGPT</title>
-    <link rel="icon" href="assets/Logo Blue.png" type="image/x-icon" />
+    <link rel="icon" href="static/assets/Logo Blue.png" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
@@ -20,7 +20,7 @@
         href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="/static/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="position-absolute bottom-0 start-0 w-100 p-3">
-            <a href="about.html" target="_blank"
+            <a href="/about" target="_blank"
                 class="btn hover-effect btn-link text-white text-decoration-none d-flex justify-content-center align-items-center mb-2 w-100">
                 <i class="fas fa-info-circle"></i>
                 <label class="label ms-2 d-none">JuanGPT</label>
@@ -63,15 +63,15 @@
 
         <!-- Nav-Bar---Start -->
         <nav class="navbar navbar-light">
-            <a class="navbar-brand" href="#">
-                <img src="assets/Logo White.png" alt="JuanGPTLogo" class="logo d-flex justify-content-start">
+            <a class="navbar-brand" href="/">
+                <img src="static/assets/Logo White.png" alt="JuanGPTLogo" class="logo d-flex justify-content-start">
             </a>
         </nav>
 
         <!-- Banner---Start -->
         <banner>
             <div class="banner-container position-relative image-container">
-                <div class="image-section"></div>
+                <div class="image-section" style = "background-image: url('/static/assets/banner.png');"></div>
                 <div class="position-absolute top-0 start-0 w-100 h-100">
                     <div class="banner-text">
                         <h1>Discover the condition of the Filipino people thru <span
@@ -80,7 +80,7 @@
                             insights about the Demographics and Social Statistics data of the Philippine Statistics
                             Authority.
                         </h5>
-                        <a href="about.html" target="_blank" class="text-decoration-none fw-bold">LEARN MORE</a>
+                        <a href="/about" target="_blank" class="text-decoration-none fw-bold">LEARN MORE</a>
                     </div>
                     <div class="overlay"></div>
                 </div>
@@ -88,13 +88,11 @@
         </banner>
 
         <main>
-            <!-- User Input---Start -->
             <div class="input-container">
                 <div class="input-group">
                     <div class="textarea-wrapper">
-                        <textarea class="text-area" placeholder="Message JuanGPT"
-                            aria-label="Message JUANGPT"></textarea>
-                        <button class="send-btn" type="button">
+                        <textarea id="userInput" class="text-area" placeholder="Message JuanGPT" aria-label="Message JUANGPT"></textarea>
+                        <button class="send-btn" type="button" onclick="sendToConversation()">
                             <i class="bi bi-send-fill"></i>
                         </button>
                     </div>
@@ -103,7 +101,7 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/static/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Text-Area Height -->
@@ -198,6 +196,25 @@
 
         });
     </script>
+    <script>
+        function sendToConversation() {
+            const userInput = document.querySelector('#userInput').value.trim();
+            if (userInput) {
+                // Store the input in localStorage
+                localStorage.setItem('pendingQuestion', userInput);
+                // Redirect to conversation.html
+                window.location.href = '/conversation';
+            }
+        }
+        
+        // Also handle Enter key press
+        document.querySelector('#userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendToConversation();
+            }
+        });
+        </script>
 </body>
 
 </html>

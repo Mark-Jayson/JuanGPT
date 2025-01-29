@@ -1,5 +1,6 @@
 {
     "source": "data\\PercentAnnualLaborByMajorCostComponent.csv",
+    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__LCE/1001B3GL010.px/table/tableViewLayout1/?rxid=b7dadd4a-b85f-47dd-b45a-300353252de5\"",
     "description": "Percent Distribution of Annual Labor Cost in Establishments Employing 20 or More Workers by Industry Group and Major Cost Component, Philippines: 2013-2019",
     "warnings": [],
     "encoding": "ascii",

@@ -1,13 +1,12 @@
 {
     "source": "data\\MarriagesByAgeGroupOfBride.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__MA/1011A1BVMA0.px/table/tableViewLayout1/?rxid=755d6dde-6b4c-467c-8864-6839e23553f5\"",
     "description": "Number of Marriages by Age Group of Bride and Place of Occurrence (Region/Province/Municipality), Philippines: 2017",
-    "warnings": [],
     "encoding": "utf-8",
     "delimiter": ",",
     "num_rows": 118,
     "num_columns": 1,
     "column_names": [
         "geolocation;total;under_15;15_19;20_24;25_29;30_34;35_39;40_44;45_49;50_54;55_59;60_64;65_69;70_74;75_and_over;not_stated"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__MA/1011A1BVMA0.px/table/tableViewLayout1/?rxid=755d6dde-6b4c-467c-8864-6839e23553f5"
 }

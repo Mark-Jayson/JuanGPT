@@ -1,13 +1,12 @@
 {
     "source": "data\\EstablishmentsWithCBAByRegion.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/1601B3GU013.px/table/tableViewLayout1/?rxid=2e73dce7-6537-444e-a85a-4413f7d69373\"",
     "description": "Number and Proportion of Establishments Employing 20 or More Workers With Union and Collective Bargaining Agreement (CBA) by Region, Philippines: August 2022",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 18,
     "num_columns": 1,
     "column_names": [
         "region;2022_total_number_of_establishments;2022_establishments_with_union;2022_proportion_of_establishments_with_union_(percent);2022_establishments_with_cba;2022_proportion_of_establishments_with_cba_(percent)"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/1601B3GU013.px/table/tableViewLayout1/?rxid=2e73dce7-6537-444e-a85a-4413f7d69373"
 }

@@ -1,13 +1,12 @@
 {
     "source": "data\\PIPPrimaryObjectiveOfProductivityProgram.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__PIGP/4001B3GP060.px/table/tableViewLayout1/?rxid=445265cc-dbdb-4720-8a25-699cc800758c\"",
     "description": "Number of Establishments Employing 20 or More Workers With Productivity Improvement Programs (PIPs) by Program Objective and Major Industry Group, Philippines: 2013",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 228,
     "num_columns": 1,
     "column_names": [
         "major_industry_group;productivity_improvement_program_objective;2013"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__PIGP/4001B3GP060.px/table/tableViewLayout1/?rxid=445265cc-dbdb-4720-8a25-699cc800758c"
 }

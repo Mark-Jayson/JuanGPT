@@ -1,219 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JuanGPT</title>
-    <link rel="icon" href="/static/assets/Logo Blue.png" type="image/x-icon" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
-        <link href="/static/css/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — JuanGPT</title>
+  <link rel="icon" href="/static/assets/Logo Blue.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="/static/css/style.css" rel="stylesheet">
 </head>
+<body style="background:var(--bg-light);min-height:100vh;display:flex;flex-direction:column;">
 
-<body style="background-color: #f2f0ee;">
-    <nav class="navbar navbar-light">
-        <a class="navbar-brand" href="/">
-            <img src="/static/assets/Logo White.png" alt="JuanGPTLogo" class="logo d-flex justify-content-start">
-        </a>
+  <!-- ================================================================
+       TOPBAR
+       ================================================================ -->
+  <nav class="about-topbar">
+    <a href="/" style="line-height:0;">
+      <img src="/static/assets/Logo Blue.png" alt="JuanGPT" class="about-topbar-logo">
+    </a>
+    <span class="about-topbar-title">JuanGPT</span>
+    <div class="about-topbar-spacer"></div>
+    <nav class="about-topbar-nav">
+      <a href="/">Home</a>
+      <a href="/conversation" class="primary">
+        <i class="fa-solid fa-message" style="font-size:0.75rem;"></i> Open Chat
+      </a>
     </nav>
-    <section class="about py-3 py-md-5">
-        <div class="container">
-            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <img class="img-fluid rounded" loading="lazy" src="/static/assets/Logo Blue.png" alt="About 1" />
-                </div>
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="row justify-content-xl-center">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="mb-3">What is JuanGPT?</h2>
-                            <p class="mb-5">
-                                JuanGPT is a conversational AI assistant designed to provide
-                                intuitive access to demographic and social statistics data
-                                from the Philippine Statistics Authority (PSA). By combining
-                                AI technology and user-friendly interfaces, JuanGPT empowers
-                                users to retrieve relevant data and gain actionable insights
-                                efficiently.
-                            </p>
+  </nav>
 
-                            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Mission</h2>
-                                            <p class="text-secondary mb-0">
-                                                JuanGPT aims to bridge the gap between raw statistical data and user
-                                                understanding by making PSA data more accessible and meaningful.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Vision</h2>
-                                            <p class="text-secondary mb-0">
-                                                To empower individuals, researchers, and organizations with accurate and
-                                                insightful information for decision-making and socio-economic
-                                                development.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ================================================================
+       HERO BANNER
+       ================================================================ -->
+  <section class="hero-banner" style="min-height:360px;padding:80px 40px 72px;">
+    <div class="hero-banner-content">
+      <p class="hero-eyebrow">Philippine Statistics Authority &middot; AI Research Tool</p>
+      <h1 class="hero-headline" style="font-size:clamp(2rem,4vw,3rem);">About JuanGPT</h1>
+      <p class="hero-sub" style="margin-bottom:0;">
+        A conversational AI interface that makes Philippine Statistics Authority data
+        accessible, searchable, and understandable — for researchers, students, and professionals.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 1 — WHAT IS JUANGPT
+       ================================================================ -->
+  <section class="page-section bg-white">
+    <div class="section-inner">
+      <div class="two-col">
+
+        <!-- Left: Image -->
+        <div class="about-img-panel">
+          <img src="/static/assets/Logo Blue.png" alt="JuanGPT"
+               style="max-width:320px;margin:0 auto;display:block;border-radius:var(--radius-lg);padding:48px;background:var(--bg-light);box-shadow:var(--shadow-md);border:1px solid var(--border);">
         </div>
-    </section>
 
-    <section class="rationale py-3 py-md-5">
-        <div class="container container-projects">
-            <h2 class="mb-3 text-center">Why We Created JuanGPT?</h2>
-            <div class="row d-flex justify-content-center">
-                <p class="mb-3">
-                    The rise of the United Nations’ 2030 Sustainable Development Goals (SDGs) has inspired innovation
-                    through student-driven initiatives like hackathons and incubators. This increasing demand for
-                    accurate
-                    and accessible data about the Filipino people is essential for research, policy-making, and startup
-                    development.
-                </p>
-                <p class="mb-3">
-                    The Philippine Statistics Authority (PSA) plays a crucial role in fulfilling this need by collecting
-                    and disseminating national data via its OpenStat platform. However, OpenStat’s interface can be
-                    difficult
-                    to navigate for those who are unfamiliar with it, and news outlets often present PSA insights
-                    without
-                    linking to the detailed datasets, limiting the ability for deeper analysis. This creates a gap in
-                    how
-                    users, particularly student researchers and other stakeholders, access reliable and comprehensive
-                    data.
-                </p>
-                <p class="mb-3">
-                    JuanGPT was developed to bridge this gap by providing an easy-to-use, conversational interface for
-                    PSA's statistical data, ensuring that everyone—from students to professionals—can access and
-                    understand critical insights with ease.
-                </p>
+        <!-- Right: Text -->
+        <div>
+          <span class="section-eyebrow">Overview</span>
+          <h2 class="section-headline">What is JuanGPT?</h2>
+          <p class="section-sub" style="margin-bottom:20px;">
+            JuanGPT is a Retrieval-Augmented Generation (RAG) AI assistant designed to provide
+            intuitive, conversational access to demographic and social statistics from the
+            Philippine Statistics Authority (PSA). By combining large language model capabilities
+            with a curated vector database of official PSA tables, JuanGPT enables users to
+            retrieve relevant data and gain actionable insights efficiently — with full source
+            attribution.
+          </p>
+
+          <!-- Stats -->
+          <div class="stat-row">
+            <div>
+              <div class="stat-number">250+</div>
+              <div class="stat-label">PSA Datasets</div>
             </div>
-        </div>
-    </section>
-
-    <section class="features py-3 py-md-5">
-        <div class="container container-projects">
-            <h2 class="mb-2 text-center">Key Features</h2>
-            <div id="project-content" class="row d-flex justify-content-center"></div>
-        </div>
-    </section>
-
-    <section class="about py-3 py-md-5">
-        <div class="container">
-            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <img class="img-fluid rounded" loading="lazy" src="/static/assets/how.gif" alt="How?" />
-                </div>
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="row justify-content-xl-center">
-                        <div class="col-12 col-xl-11">
-                            <h2 class="mb-5">How JuanGPT Works?</h2>
-
-                            <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                                <div class="col-12 col-md-6 mb-lg-3">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <img class="img-fluid rounded" width="190" loading="lazy"
-                                                src="/static/assets/one.gif" alt="one" />
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Input a Query</h2>
-                                            <p class="text-secondary mb-0">
-                                                Simply type in your question or keyword (e.g., "population of Manila in
-                                                2023").
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <img class="img-fluid rounded" width="200" loading="lazy"
-                                                src="/static/assets/two.gif" alt="two" />
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Data Processing</h2>
-                                            <p class="text-secondary mb-0">
-                                                The AI processes your input and searches PSA’s demographic and social
-                                                statistics data.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="d-flex">
-                                        <div class="me-4 text-primary">
-                                            <img class="img-fluid rounded" width="200" loading="lazy"
-                                                src="/static/assets/three.gif" alt="three" />
-                                        </div>
-                                        <div>
-                                            <h2 class="h4 mb-3">Results and Insights</h2>
-                                            <p class="text-secondary mb-0">
-                                                Receive a brief summary of the data and a link to the original PSA table
-                                                for verification and transparency.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div>
+              <div class="stat-number">RAG</div>
+              <div class="stat-label">Architecture</div>
             </div>
-        </div>
-    </section>
-
-    <script>
-        var names = ["Data Retrieval", "Conversational Interaction"]
-        var description = ["Quickly search and retrieve specific demographic and social statistics data.", "Experience natural and intuitive conversations for data queries."];
-        var images = ["/static/assets/retrieval.gif", "/static/assets/conversation.gif"];
-
-        for (var i = 0; i < description.length; i++) {
-            var projectContent = document.getElementById("project-content");
-            projectContent.innerHTML += `<div class="col-12 col-lg-4 col-md-6 d-flex align-items-stretch my-3">
-            <div class="card-feature text-center">
-                <img src="${images[i]}" class="card-img" alt="Project Image ${i + 1}">
-                <div class="card-body">
-                    <h2 class="card-title mt-0" style="font-size: 1.5rem;color: #111; line-height: 2.25rem;">${names[i]}</h2>
-                    <p class="card-description my-0" style="font-size: 1.1rem; color: #111;">${description[i]}</p>
-                </div>
+            <div>
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Source-cited</div>
             </div>
-        </div>`;
-        }
+          </div>
 
-    </script>
+          <!-- Mission / Vision -->
+          <div class="mv-grid">
+            <div class="mv-card">
+              <div class="mv-card-icon">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <h3>Mission</h3>
+              <p>Bridge the gap between raw statistical data and user understanding by making PSA data accessible, conversational, and meaningful to all stakeholders.</p>
+            </div>
+            <div class="mv-card">
+              <div class="mv-card-icon">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <h3>Vision</h3>
+              <p>Empower individuals, researchers, and organizations with accurate, cited insights for evidence-based decision-making and socio-economic development.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 2 — WHY WE CREATED JUANGPT
+       ================================================================ -->
+  <section class="page-section bg-light">
+    <div class="section-inner">
+
+      <div class="two-col">
+
+        <!-- Left: text -->
+        <div>
+          <span class="section-eyebrow">Rationale</span>
+          <h2 class="section-headline">Why We Created JuanGPT</h2>
+
+          <div class="rich-text">
+            <p>
+              The rise of the United Nations' <strong>2030 Sustainable Development Goals (SDGs)</strong>
+              has inspired data-driven innovation through student initiatives, hackathons, and
+              policy incubators across the Philippines. The demand for accurate, accessible data
+              about the Filipino people is critical for research, policy-making, and startup
+              development.
+            </p>
+            <p>
+              The <strong>Philippine Statistics Authority (PSA)</strong> fulfils this need through
+              its OpenStat platform — yet OpenStat's interface can be difficult to navigate for
+              those unfamiliar with statistical databases. News outlets frequently cite PSA
+              figures without linking to the source datasets, limiting deeper independent analysis.
+              This creates a structural gap in how users — particularly student researchers and
+              civil society stakeholders — access reliable and comprehensive data.
+            </p>
+            <p>
+              JuanGPT was developed to close this gap by providing an easy-to-use, conversational
+              interface over PSA's statistical datasets, ensuring that <em>everyone — from students
+              to policymakers</em> — can access and understand critical socio-economic insights
+              with ease, speed, and full source transparency.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: highlight card -->
+        <div>
+          <div style="background:var(--navy);border-radius:var(--radius-lg);padding:36px 32px;color:white;box-shadow:var(--shadow-lg);">
+            <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;">The Problem We Solve</p>
+            <h3 style="font-size:1.35rem;font-weight:800;color:white;line-height:1.3;margin-bottom:20px;">
+              Making PSA Data Accessible to Everyone
+            </h3>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:32px;height:32px;min-width:32px;background:rgba(30,120,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--accent);">
+                  <i class="fa-solid fa-table" style="font-size:0.8rem;"></i>
+                </div>
+                <div>
+                  <p style="font-size:0.78rem;font-weight:600;color:white;margin-bottom:3px;">Complex data tables</p>
+                  <p style="font-size:0.73rem;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">PSA datasets are detailed but hard to navigate without statistical expertise.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:32px;height:32px;min-width:32px;background:rgba(30,120,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--accent);">
+                  <i class="fa-solid fa-link-slash" style="font-size:0.8rem;"></i>
+                </div>
+                <div>
+                  <p style="font-size:0.78rem;font-weight:600;color:white;margin-bottom:3px;">Missing source links</p>
+                  <p style="font-size:0.73rem;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">Media reports cite PSA figures but rarely link back to original source tables.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:32px;height:32px;min-width:32px;background:rgba(30,120,255,0.25);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--accent);">
+                  <i class="fa-solid fa-message" style="font-size:0.8rem;"></i>
+                </div>
+                <div>
+                  <p style="font-size:0.78rem;font-weight:600;color:white;margin-bottom:3px;">Our solution</p>
+                  <p style="font-size:0.73rem;color:rgba(255,255,255,0.5);margin:0;line-height:1.5;">JuanGPT answers questions in plain language and always cites the source dataset.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 3 — HOW IT WORKS
+       ================================================================ -->
+  <section class="page-section bg-white">
+    <div class="section-inner centered">
+      <span class="section-eyebrow">Process</span>
+      <h2 class="section-headline">How JuanGPT Works</h2>
+      <p class="section-sub">
+        A three-step Retrieval-Augmented Generation pipeline ensures every answer
+        is grounded in official PSA data with full traceability.
+      </p>
+
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <div class="step-card-thumb">
+            <img src="/static/assets/one.gif" alt="Step 1 — Input Query">
+          </div>
+          <div class="step-card-body">
+            <div class="step-number">1</div>
+            <h3>Submit a Query</h3>
+            <p>
+              Type a natural-language question — e.g., "What is the unemployment rate in
+              Metro Manila?" — into the chat interface. No statistical syntax required.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-card-thumb">
+            <img src="/static/assets/two.gif" alt="Step 2 — Data Processing">
+          </div>
+          <div class="step-card-body">
+            <div class="step-number">2</div>
+            <h3>Retrieval &amp; Processing</h3>
+            <p>
+              The system performs semantic similarity search over the Qdrant vector database,
+              retrieves the most relevant PSA dataset chunks, and passes them to the LLM as context.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-card-thumb">
+            <img src="/static/assets/three.gif" alt="Step 3 — Results">
+          </div>
+          <div class="step-card-body">
+            <div class="step-number">3</div>
+            <h3>Results &amp; Citation</h3>
+            <p>
+              Receive a concise, readable summary with direct links to the original PSA source
+              tables, ensuring transparency and enabling independent verification.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 4 — KEY FEATURES
+       ================================================================ -->
+  <section class="page-section bg-light">
+    <div class="section-inner">
+      <div style="text-align:center;">
+        <span class="section-eyebrow">Capabilities</span>
+        <h2 class="section-headline">Key Features</h2>
+        <p class="section-sub">
+          JuanGPT combines language AI with structured data retrieval to deliver
+          a uniquely capable research assistant for Philippine statistics.
+        </p>
+      </div>
+
+      <div class="feature-wide-grid">
+
+        <div class="feature-wide-card">
+          <div class="feature-wide-thumb">
+            <img src="/static/assets/retrieval.gif" alt="Data Retrieval">
+          </div>
+          <div class="feature-wide-body">
+            <div class="feature-wide-tag">Core Capability</div>
+            <h3>Semantic Data Retrieval</h3>
+            <p>
+              Quickly search across 250+ PSA statistical tables using natural-language queries.
+              The RAG pipeline retrieves the most contextually relevant data chunks with
+              vector similarity search, not just keyword matching.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-wide-card">
+          <div class="feature-wide-thumb">
+            <img src="/static/assets/conversation.gif" alt="Conversational AI">
+          </div>
+          <div class="feature-wide-body">
+            <div class="feature-wide-tag">Core Capability</div>
+            <h3>Conversational Interaction</h3>
+            <p>
+              Maintain multi-turn conversations with persistent context. Ask follow-up
+              questions, request comparisons across regions or years, and receive structured
+              responses in plain, professional language.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-wide-card">
+          <div class="feature-wide-thumb" style="background:linear-gradient(135deg,var(--navy),#1e78ff);min-height:120px;">
+            <i class="fa-solid fa-link" style="font-size:2.2rem;color:white;"></i>
+          </div>
+          <div class="feature-wide-body">
+            <div class="feature-wide-tag">Transparency</div>
+            <h3>Full Source Attribution</h3>
+            <p>
+              Every response includes direct links to the original PSA dataset on OpenStat,
+              allowing researchers to verify findings, download raw tables, and maintain
+              academic integrity in their work.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-wide-card">
+          <div class="feature-wide-thumb" style="background:linear-gradient(135deg,#064e3b,#10b981);min-height:120px;">
+            <i class="fa-solid fa-database" style="font-size:2.2rem;color:white;"></i>
+          </div>
+          <div class="feature-wide-body">
+            <div class="feature-wide-tag">Data Coverage</div>
+            <h3>Comprehensive PSA Coverage</h3>
+            <p>
+              Covers labor force, employment, wages, population, vital statistics (births,
+              deaths, marriages), social indicators, poverty incidence, and occupational
+              safety data from PSA's OpenStat portal.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 5 — TECHNOLOGY STACK
+       ================================================================ -->
+  <section class="page-section bg-navy">
+    <div class="section-inner centered">
+      <span class="section-eyebrow" style="color:rgba(255,255,255,0.5);">Under the Hood</span>
+      <h2 class="section-headline">Technology Stack</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.55);margin-left:auto;margin-right:auto;">
+        JuanGPT is built on a production-grade AI stack combining Google's frontier
+        language model with enterprise-grade vector search and retrieval infrastructure.
+      </p>
+
+      <div class="tech-grid">
+
+        <div class="tech-card">
+          <span class="tech-card-icon">✨</span>
+          <h4>Gemini 2.5 Flash</h4>
+          <p>Google's frontier LLM for high-quality, contextual natural-language generation and reasoning.</p>
+        </div>
+
+        <div class="tech-card">
+          <span class="tech-card-icon">🔍</span>
+          <h4>Qdrant</h4>
+          <p>High-performance vector database for semantic similarity search across PSA dataset embeddings.</p>
+        </div>
+
+        <div class="tech-card">
+          <span class="tech-card-icon">⛓️</span>
+          <h4>LangChain</h4>
+          <p>RAG orchestration framework that manages retrieval pipelines, prompt templates, and conversation history.</p>
+        </div>
+
+        <div class="tech-card">
+          <span class="tech-card-icon">⚡</span>
+          <h4>FastAPI</h4>
+          <p>Asynchronous Python backend serving the chat API, conversation management endpoints, and static assets.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 6 — DATA SCOPE
+       ================================================================ -->
+  <section class="page-section bg-white">
+    <div class="section-inner centered">
+      <span class="section-eyebrow">Coverage</span>
+      <h2 class="section-headline">Data Scope &amp; Sources</h2>
+      <p class="section-sub">
+        JuanGPT's knowledge base is sourced exclusively from official PSA publications
+        available through OpenStat.
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;">
+
+        <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 18px;text-align:left;border-top:3px solid var(--accent);">
+          <div style="font-size:1.3rem;margin-bottom:10px;">👥</div>
+          <h4 style="font-size:0.82rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Population &amp; Demographics</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Census data, population projections, household composition, housing characteristics,
+            and geographic distributions from the 2020 Census of Population and Housing.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 18px;text-align:left;border-top:3px solid #10b981;">
+          <div style="font-size:1.3rem;margin-bottom:10px;">💼</div>
+          <h4 style="font-size:0.82rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Labor &amp; Employment</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Labor force participation, employment rates, underemployment, occupational distributions,
+            industry-level employment size, and labor turnover data from BLES surveys.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 18px;text-align:left;border-top:3px solid #f59e0b;">
+          <div style="font-size:1.3rem;margin-bottom:10px;">💰</div>
+          <h4 style="font-size:0.82rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Wages &amp; Income</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Minimum wage rates, average daily and monthly wages by region and industry,
+            labor costs, productivity indices, and income inequality measures.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 18px;text-align:left;border-top:3px solid #8b5cf6;">
+          <div style="font-size:1.3rem;margin-bottom:10px;">🏥</div>
+          <h4 style="font-size:0.82rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Vital Statistics</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Registered births, deaths, marriages, infant mortality, maternal health indicators,
+            cause-of-death classifications, and disease incidence rates.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 18px;text-align:left;border-top:3px solid #ef4444;">
+          <div style="font-size:1.3rem;margin-bottom:10px;">⚠️</div>
+          <h4 style="font-size:0.82rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Occupational Safety</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Occupational injury and disease incidence rates, severity and frequency rates,
+            workplace safety establishment data, and OSH policy coverage statistics.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 18px;text-align:left;border-top:3px solid var(--navy);">
+          <div style="font-size:1.3rem;margin-bottom:10px;">🤝</div>
+          <h4 style="font-size:0.82rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;">Labor Relations</h4>
+          <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Collective bargaining agreements, unionization rates, strikes and lockouts,
+            productivity incentive programs, and subcontracting arrangement data.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="/static/assets/Logo Blue.png" alt="JuanGPT">
+        <p>
+          JuanGPT is an AI-powered research assistant for exploring Philippine Statistics
+          Authority data covering labor, demographics, income, and social welfare.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h6>Data Topics</h6>
+        <ul>
+          <li><a href="/conversation">Labor Force</a></li>
+          <li><a href="/conversation">Population</a></li>
+          <li><a href="/conversation">Wages &amp; Salary</a></li>
+          <li><a href="/conversation">Vital Statistics</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Resources</h6>
+        <ul>
+          <li><a href="https://psa.gov.ph" target="_blank" rel="noopener">PSA Official Site</a></li>
+          <li><a href="https://openstat.psa.gov.ph" target="_blank" rel="noopener">PSA OpenStat</a></li>
+          <li><a href="/">JuanGPT Home</a></li>
+          <li><a href="/conversation">Open Chat</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>System Info</h6>
+        <ul>
+          <li><a href="javascript:void(0)">Model: Gemini 2.5 Flash</a></li>
+          <li><a href="javascript:void(0)">Vector DB: Qdrant</a></li>
+          <li><a href="javascript:void(0)">Framework: LangChain</a></li>
+          <li><a href="javascript:void(0)">Backend: FastAPI</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 JuanGPT. Data sourced from the Philippine Statistics Authority.</p>
+      <p>Powered by Google Gemini &amp; LangChain</p>
+    </div>
+  </footer>
+
 </body>
-
 </html>

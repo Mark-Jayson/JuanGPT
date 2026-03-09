@@ -1,13 +1,12 @@
 {
     "source": "data\\RegisteredTotalDeaths.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__DE/3011A1BVDA0.px/table/tableViewLayout1/?rxid=f94820fa-cde5-4031-963b-f20c6ca399d3\"",
     "description": "Number of Registered Total Deaths,  Maternal Deaths and Infant Deaths and by Usual Residence and Place of Occurrence  (Region, Province, City/Municipality), Philippines:2016",
-    "warnings": [],
     "encoding": "utf-8",
     "delimiter": ",",
     "num_rows": 119,
     "num_columns": 1,
     "column_names": [
         "geolocation;total_deaths_usual_residence;total_deaths_place_of_occurrence;maternal_deaths_usual_residence;maternal_deaths_place_of_occurrence;infant_deaths_usual_residence;infant_deaths_place_of_occurrence"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__DE/3011A1BVDA0.px/table/tableViewLayout1/?rxid=f94820fa-cde5-4031-963b-f20c6ca399d3"
 }

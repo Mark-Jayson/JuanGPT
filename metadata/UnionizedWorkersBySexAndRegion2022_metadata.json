@@ -1,13 +1,12 @@
 {
     "source": "data\\UnionizedWorkersBySexAndRegion2022.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/7601B3GU093.px/table/tableViewLayout1/?rxid=2e73dce7-6537-444e-a85a-4413f7d69373\"",
     "description": "Number of Unionized Workers, Union Officers and Presidents in Establishments Employing 20 or More Workers by Sex and Region:  August 2022",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 18,
     "num_columns": 1,
     "column_names": [
         "region;2022_unionized_workers_both_sexes;2022_unionized_workers_male;2022_unionized_workers_female;2022_union_officers_both_sexes;2022_union_officers_male;2022_union_officers_female;2022_union_presidents_both_sexes;2022_union_presidents_male;2022_union_presidents_female"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/7601B3GU093.px/table/tableViewLayout1/?rxid=2e73dce7-6537-444e-a85a-4413f7d69373"
 }

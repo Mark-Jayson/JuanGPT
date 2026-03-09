@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-python-dotenv
-llama-index
-sentence-transformers
-groq
-pydantic

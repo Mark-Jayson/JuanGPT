@@ -1,13 +1,12 @@
 {
     "source": "data\\LengthOfRecruitmentPeriod2016.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OSS/7001B3GS080.px/table/tableViewLayout1/?rxid=8a8a8c67-d058-4943-a972-f0ab3d83f510\"",
     "description": "Length of Recruitment Period in Filling-Up Vacancies in Establishments with 20 or More Workers by Major Occupation Group, Philippines: January 2013 - June 2014 to January 2015 - June 2016",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 10,
     "num_columns": 1,
     "column_names": [
         "major_occupation_group;2014_total_mean;2014_total_median;2014_hard_to_fill_mean;2014_hard_to_fill_median;2014_easy_to_fill_mean;2014_easy_to_fill_median;2016_total_mean;2016_total_median;2016_hard_to_fill_mean;2016_hard_to_fill_median;2016_easy_to_fill_mean;2016_easy_to_fill_median"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__OSS/7001B3GS080.px/table/tableViewLayout1/?rxid=8a8a8c67-d058-4943-a972-f0ab3d83f510"
 }

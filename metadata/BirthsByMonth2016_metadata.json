@@ -1,13 +1,12 @@
 {
     "source": "data\\BirthsByMonth2016.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__BI/2081A1BVBA7.PX/table/tableViewLayout1/?rxid=dff4ec13-2b60-4784-8315-808f2bb277b3\"",
     "description": "Number of Live Births by Place of Occurrence, Month of Occurrence and Sex: 2016",
-    "warnings": [],
     "encoding": "utf-8",
     "delimiter": ",",
     "num_rows": 118,
     "num_columns": 1,
     "column_names": [
         "place_of_occurrence;total_male;total_female;jan_male;jan_female;feb_male;feb_female;mar_male;mar_female;apr_male;apr_female;may_male;may_female;jun_male;jun_female;jul_male;jul_female;aug_male;aug_female;sep_male;sep_female;oct_male;oct_female;nov_male;nov_female;dec_male;dec_female"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__BI/2081A1BVBA7.PX/table/tableViewLayout1/?rxid=dff4ec13-2b60-4784-8315-808f2bb277b3"
 }

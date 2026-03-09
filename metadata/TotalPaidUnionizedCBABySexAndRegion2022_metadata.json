@@ -1,13 +1,12 @@
 {
     "source": "data\\TotalPaidUnionizedCBABySexAndRegion2022.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/3851B3GU043.px/table/tableViewLayout1/?rxid=2e73dce7-6537-444e-a85a-4413f7d69373\"",
     "description": "Number of Total Paid Employees, Unionized Workers and CBA Coverage in Establishments Employing 20 or More Workers by Sex and Region: August 2022",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 18,
     "num_columns": 1,
     "column_names": [
         "region;2022_paid_employees_both_sexes;2022_paid_employees_male;2022_paid_employees_female;2022_unionized_workers_both_sexes;2022_unionized_workers_male;2022_unionized_workers_female;2022_cba_coverage_both_sexes;2022_cba_coverage_male;2022_cba_coverage_female"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/3851B3GU043.px/table/tableViewLayout1/?rxid=2e73dce7-6537-444e-a85a-4413f7d69373"
 }

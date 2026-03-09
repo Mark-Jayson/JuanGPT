@@ -1,13 +1,12 @@
 {
     "source": "data\\ReasonsForSeparations.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__LTS/5001B3GM050.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db\"",
     "description": "Reasons for Separations Initiated by Employees in Establishments with 20 or More Workers, National Capital Region: 1st Quarter 2018 to 4th Quarter 2019",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 15,
     "num_columns": 1,
     "column_names": [
         "reasons_for_quits_(employee_initiated_separation);2018_q1;2018_q2;2018_q3;2018_q4;2019_q1;2019_q2;2019_q3;2019_q4"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__LTS/5001B3GM050.px/table/tableViewLayout1/?rxid=227f6805-9732-41b6-981c-ac178832d6db"
 }

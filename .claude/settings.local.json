@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:console.groq.com)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill /PID 16552 /F)",
+      "Bash(cmd /c \"taskkill /PID 16552 /F\")"
+    ]
+  }
+}

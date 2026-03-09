@@ -1,13 +1,12 @@
 {
     "source": "data\\HousingData.csv",
-    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO/0041A6DBNF0.px/table/tableViewLayout1/?rxid=b09a3d51-6bea-4625-92a0-14403d95f575",
     "description": "Occupied Housing Units by Type of Building, Number of Floors, and Province/Highly Urbanized City: Philippines, 2020",
-    "warnings": [],
     "encoding": "utf-8",
     "delimiter": ",",
     "num_rows": 1350,
     "num_columns": 1,
     "column_names": [
         "type_of_building;geographic_location;total;one_floor;two_floors;three_floors;four_floors;five_to_10_floors;11_floors_or_more;not_reported;not_applicable"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO/0041A6DBNF0.px/table/tableViewLayout1/?rxid=b09a3d51-6bea-4625-92a0-14403d95f575"
 }

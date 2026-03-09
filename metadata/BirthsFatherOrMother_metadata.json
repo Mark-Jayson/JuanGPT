@@ -1,13 +1,12 @@
 {
     "source": "data\\BirthsFatherOrMother.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__BI/2101A1BVBA9.PX/table/tableViewLayout1/?rxid=dff4ec13-2b60-4784-8315-808f2bb277b3\"",
     "description": "Live Births Which Occurred Abroad to Filipino  Father or Mother or  Both by Age Group and Parents: 2016",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 11,
     "num_columns": 1,
     "column_names": [
         "age_group;father;mother"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__VS__BI/2101A1BVBA9.PX/table/tableViewLayout1/?rxid=dff4ec13-2b60-4784-8315-808f2bb277b3"
 }

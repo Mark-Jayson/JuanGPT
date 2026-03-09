@@ -1,13 +1,12 @@
 {
     "source": "data\\UnionizedWorkersByTypeOfOwnershipAndSex.csv",
-    "link": "\"https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/4501B3GU052.px/table/tableViewLayout1/?rxid=871fe56f-fd4b-4b5f-b7b8-6fec4eaaf974\"",
     "description": "Number of Unionized Workers in Establishments Employing 20 or More Workers by Type of Ownership and Sex, Philippines: June 2014 to June 2016",
-    "warnings": [],
-    "encoding": "ascii",
+    "encoding": "Windows-1252",
     "delimiter": ",",
     "num_rows": 12,
     "num_columns": 1,
     "column_names": [
         "type_of_ownership;sex;2014;2016"
-    ]
+    ],
+    "link": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1B__ISLE__UCB/4501B3GU052.px/table/tableViewLayout1/?rxid=871fe56f-fd4b-4b5f-b7b8-6fec4eaaf974"
 }

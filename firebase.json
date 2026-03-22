@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "frontend",
+    "cleanUrls": true,
+    "ignore": ["firebase.json", "**/.*"],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "juangpt",
+          "region": "us-central1"
+        }
+      }
+    ]
+  }
+}

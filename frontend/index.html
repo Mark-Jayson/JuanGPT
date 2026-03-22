@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JuanGPT — Philippine Statistics AI</title>
+  <link rel="icon" href="/assets/Logo Blue.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ================================================================
+       SIDEBAR
+       ================================================================ -->
+  <aside class="sidebar collapsed" id="sidebar">
+
+    <div class="sidebar-header">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <img src="/assets/Logo White.png" alt="JuanGPT" class="sidebar-logo">
+    </div>
+
+    <div class="sidebar-body">
+
+      <!-- New Chat -->
+      <button class="btn-new-chat" onclick="window.location.href='/conversation'">
+        <i class="fa-solid fa-plus"></i>
+        <span class="btn-text">New Chat</span>
+      </button>
+
+      <!-- Recent Conversations -->
+      <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;gap:6px;">
+        <div class="sidebar-section-label">Recent Conversations</div>
+        <div class="conversations-list" id="convList">
+          <div class="conv-card" style="opacity:0.5;cursor:default;pointer-events:none;">
+            <div class="conv-avatar"><i class="fa-solid fa-comments" style="font-size:0.8rem;"></i></div>
+            <div class="conv-info">
+              <div class="conv-title">No conversations yet</div>
+              <div class="conv-meta">Start chatting to see history</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/about" target="_blank">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>About JuanGPT</span>
+      </a>
+      <a href="/conversation">
+        <i class="fa-solid fa-message"></i>
+        <span>Open Chat</span>
+      </a>
+    </div>
+
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ================================================================
+       MAIN PANEL
+       ================================================================ -->
+  <main class="main-panel index-main">
+
+    <!-- Topbar -->
+    <nav class="topbar">
+      <button class="sidebar-toggle" id="mobileSidebarToggle" style="display:none;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;" aria-label="Open sidebar">
+        <i class="fa-solid fa-bars" style="color:var(--navy);font-size:1rem;"></i>
+      </button>
+      <img src="/assets/Logo Blue.png" alt="JuanGPT" class="topbar-logo">
+      <span class="topbar-title">JuanGPT</span>
+      <div class="topbar-spacer"></div>
+      <span class="topbar-badge">PSA Data &middot; 2024</span>
+      <a href="/about" target="_blank" class="topbar-link">About</a>
+    </nav>
+
+    <!-- Scrollable content area -->
+    <div class="index-scroll">
+
+      <!-- ── HERO BANNER (banner.png background) ── -->
+      <section class="hero-banner">
+        <div class="hero-banner-content">
+          <p class="hero-eyebrow">Philippine Statistics Authority &middot; AI Research Interface</p>
+          <h1 class="hero-headline">
+            Discover the condition of the Filipino people thru <br>Data
+          </h1>
+          <p class="hero-sub">
+            JuanGPT is a conversational AI powered by PSA datasets. Ask about demographics,
+            labor markets, wages, health statistics, and more — get instant, cited answers.
+          </p>
+          <div class="hero-cta-row">
+            <a href="/conversation" class="btn-hero-primary">
+              <i class="fa-solid fa-message"></i> Start Chatting
+            </a>
+            <a href="/about" target="_blank" class="btn-hero-outline">
+              <i class="fa-solid fa-circle-info"></i> Learn More
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FEATURE CARDS SECTION ── -->
+      <section class="features-section">
+        <div class="features-section-inner">
+          <span class="section-eyebrow">Explore Topics</span>
+          <h2 class="section-headline">What Can You Ask?</h2>
+          <p class="section-sub" style="margin-bottom:36px;">
+            Browse by topic or type any question below. JuanGPT retrieves answers directly
+            from official PSA statistical tables and cites its sources.
+          </p>
+
+          <div class="feature-grid">
+
+            <div class="feature-card" onclick="prefillAndSend('Tell me about population trends in the Philippines')">
+              <div class="feature-card-thumb" style="background:linear-gradient(135deg,#0a2463,#1e78ff);">
+                <img src="/assets/population.png" alt="">
+                <div class="thumb-overlay">
+                  <div class="thumb-icon">👥</div>
+                </div>
+              </div>
+              <div class="feature-card-body">
+                <div class="feature-card-tag">Demographics</div>
+                <div class="feature-card-title">Population &amp; Census</div>
+                <div class="feature-card-desc">Explore PSA population projections, census counts, and demographic breakdowns by region and age group.</div>
+              </div>
+            </div>
+
+            <div class="feature-card" onclick="prefillAndSend('What is the current unemployment rate in the Philippines by region?')">
+              <div class="feature-card-thumb" style="background:linear-gradient(135deg,#064e3b,#10b981);">
+                <img src="/assets/labor.png" alt="">
+                <div class="thumb-overlay">
+                  <div class="thumb-icon">💼</div>
+                </div>
+              </div>
+              <div class="feature-card-body">
+                <div class="feature-card-tag">Employment</div>
+                <div class="feature-card-title">Labor &amp; Employment</div>
+                <div class="feature-card-desc">Analyze labor force participation rates, employment by industry, and occupational distributions.</div>
+              </div>
+            </div>
+
+            <div class="feature-card" onclick="prefillAndSend('What are the average wages in the Philippines by sector and region?')">
+              <div class="feature-card-thumb" style="background:linear-gradient(135deg,#78350f,#f59e0b);">
+                <img src="/assets/income.png" alt="">
+                <div class="thumb-overlay">
+                  <div class="thumb-icon">💰</div>
+                </div>
+              </div>
+              <div class="feature-card-body">
+                <div class="feature-card-tag">Income</div>
+                <div class="feature-card-title">Wages &amp; Income</div>
+                <div class="feature-card-desc">Discover minimum wage rates, average pay by sector, and income inequality trends from PSA records.</div>
+              </div>
+            </div>
+
+            <div class="feature-card" onclick="prefillAndSend('Show me birth and death statistics in the Philippines')">
+              <div class="feature-card-thumb" style="background:linear-gradient(135deg,#4c1d95,#8b5cf6);">
+                <div class="thumb-overlay">
+                  <div class="thumb-icon">🏥</div>
+                </div>
+              </div>
+              <div class="feature-card-body">
+                <div class="feature-card-tag">Vital Statistics</div>
+                <div class="feature-card-title">Health &amp; Vital Data</div>
+                <div class="feature-card-desc">Examine birth rates, mortality statistics, maternal health outcomes, and disease incidence from PSA.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FOOTER ── -->
+      <footer class="site-footer">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <img src="/assets/Logo Blue.png" alt="JuanGPT">
+            <p>
+              JuanGPT is an AI-powered research assistant for exploring Philippine Statistics
+              Authority data covering labor, demographics, income, and social welfare.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h6>Data Topics</h6>
+            <ul>
+              <li><a href="javascript:void(0)" onclick="prefillAndSend('Tell me about labor force participation data')">Labor Force</a></li>
+              <li><a href="javascript:void(0)" onclick="prefillAndSend('Tell me about Philippine population data')">Population</a></li>
+              <li><a href="javascript:void(0)" onclick="prefillAndSend('What are the wage and salary statistics in the Philippines?')">Wages &amp; Salary</a></li>
+              <li><a href="javascript:void(0)" onclick="prefillAndSend('Show me birth and mortality statistics')">Vital Statistics</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h6>Resources</h6>
+            <ul>
+              <li><a href="https://psa.gov.ph" target="_blank" rel="noopener">PSA Official Site</a></li>
+              <li><a href="/about" target="_blank">About JuanGPT</a></li>
+              <li><a href="/conversation">Open Chat</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h6>System Info</h6>
+            <ul>
+              <li><a href="javascript:void(0)">Model: Gemini 2.5 Flash</a></li>
+              <li><a href="javascript:void(0)">Vector DB: Qdrant</a></li>
+              <li><a href="javascript:void(0)">Framework: LangChain</a></li>
+              <li><a href="javascript:void(0)">RAG Pipeline</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 JuanGPT. Data sourced from the Philippine Statistics Authority.</p>
+          <p>Powered by Google Gemini &amp; LangChain</p>
+        </div>
+      </footer>
+
+    </div><!-- end .index-scroll -->
+
+    <!-- ── INPUT BAR ── -->
+    <div class="input-bar-wrapper">
+      <div class="input-bar">
+        <textarea
+          id="userInput"
+          placeholder="Ask JuanGPT about Philippine statistics..."
+          rows="1"
+          aria-label="Message JuanGPT"
+        ></textarea>
+        <div class="input-actions">
+          <button class="btn-send" id="sendBtn" onclick="sendToConversation()">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Send</span>
+          </button>
+        </div>
+      </div>
+      <p class="input-hint">
+        <i class="fa-solid fa-lock" style="font-size:0.58rem;"></i>
+        Enter to send &middot; Shift+Enter for new line &middot; Data sourced from PSA
+      </p>
+    </div>
+
+  </main>
+
+</div><!-- end .app-shell -->
+
+<script>
+  // ---- Sidebar Toggle Logic ----
+  const sidebar         = document.getElementById('sidebar');
+  const overlay         = document.getElementById('sidebarOverlay');
+  const sidebarToggleBtn = document.getElementById('sidebarToggle');
+  const mobileToggleBtn  = document.getElementById('mobileSidebarToggle');
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function syncMobileToggle() {
+    mobileToggleBtn.style.display = isMobile() ? 'flex' : 'none';
+  }
+
+  sidebarToggleBtn.addEventListener('click', () => {
+    if (isMobile()) {
+      sidebar.classList.toggle('mobile-open');
+      overlay.classList.toggle('active');
+    } else {
+      sidebar.classList.toggle('collapsed');
+    }
+  });
+
+  mobileToggleBtn.addEventListener('click', () => {
+    sidebar.classList.add('mobile-open');
+    overlay.classList.add('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('active');
+  });
+
+  window.addEventListener('resize', syncMobileToggle);
+  syncMobileToggle();
+
+  // ---- Textarea auto-resize ----
+  const textarea = document.getElementById('userInput');
+  textarea.addEventListener('input', function () {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+  });
+
+  // ---- Send to Conversation ----
+  function sendToConversation() {
+    const val = textarea.value.trim();
+    if (!val) return;
+    localStorage.setItem('pendingQuestion', val);
+    window.location.href = '/conversation';
+  }
+
+  // ---- Prefill textarea from feature card / footer link ----
+  function prefillAndSend(prompt) {
+    textarea.value = prompt;
+    textarea.dispatchEvent(new Event('input'));
+    textarea.focus();
+    textarea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ---- Enter key handler ----
+  textarea.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendToConversation();
+    }
+  });
+
+  // ---- Load recent conversations into sidebar ----
+  async function loadConversations() {
+    try {
+      const res = await fetch('/api/conversations');
+      const convs = await res.json();
+      renderSidebar(convs);
+    } catch (e) {
+      console.warn('Could not load conversations:', e);
+    }
+  }
+
+  function getTimeAgo(dateStr) {
+    if (!dateStr) return 'Recently';
+    try {
+      const diff = Date.now() - new Date(dateStr).getTime();
+      const mins = Math.floor(diff / 60000);
+      if (mins < 1)  return 'Just now';
+      if (mins < 60) return `${mins}m ago`;
+      const hrs = Math.floor(mins / 60);
+      if (hrs < 24)  return `${hrs}h ago`;
+      return `${Math.floor(hrs / 24)}d ago`;
+    } catch { return 'Recently'; }
+  }
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function renderSidebar(convs) {
+    const list = document.getElementById('convList');
+    if (!convs.length) {
+      list.innerHTML = `
+        <div class="conv-card" style="opacity:0.5;cursor:default;pointer-events:none;">
+          <div class="conv-avatar"><i class="fa-solid fa-comments" style="font-size:0.8rem;"></i></div>
+          <div class="conv-info">
+            <div class="conv-title">No conversations yet</div>
+            <div class="conv-meta">Start chatting to see history</div>
+          </div>
+        </div>`;
+      return;
+    }
+    list.innerHTML = '';
+    convs.forEach(conv => {
+      const card = document.createElement('div');
+      card.className = 'conv-card';
+      card.style.cursor = 'pointer';
+      const initials = conv.title.charAt(0).toUpperCase();
+      const when = getTimeAgo(conv.created_at || '');
+      card.innerHTML = `
+        <div class="conv-avatar">${initials}</div>
+        <div class="conv-info">
+          <div class="conv-title">${escHtml(conv.title)}</div>
+          <div class="conv-meta">${when} &middot; Gemini Flash</div>
+        </div>`;
+      card.addEventListener('click', () => {
+        localStorage.setItem('openConversationId', conv.id);
+        window.location.href = '/conversation';
+      });
+      list.appendChild(card);
+    });
+  }
+
+  loadConversations();
+</script>
+
+</body>
+</html>

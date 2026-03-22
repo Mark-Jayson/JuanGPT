@@ -1,0 +1,23 @@
+{
+  "projects": {
+    "default": "juangpt-a000b"
+  },
+  "targets": {
+    "juangpt-a000b": {
+      "hosting": {
+        "public": "frontend/public",
+        "ignore": [
+          "firebase.json",
+          "**/.*",
+          "**/node_modules/**"
+        ],
+        "rewrites": [
+          {
+            "source": "**",
+            "destination": "/index.html"
+          }
+        ]
+      }
+    }
+  }
+}

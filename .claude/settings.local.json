@@ -4,7 +4,8 @@
       "WebFetch(domain:console.groq.com)",
       "Bash(netstat -ano)",
       "Bash(taskkill /PID 16552 /F)",
-      "Bash(cmd /c \"taskkill /PID 16552 /F\")"
+      "Bash(cmd /c \"taskkill /PID 16552 /F\")",
+      "Bash(find /c/Users/Lenovo/Documents/personal-projects/juangpt/JuanGPT -maxdepth 2 -type d ! -path */venv* ! -path */.git*)"
     ]
   }
 }

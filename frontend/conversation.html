@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JuanGPT — Chat</title>
+  <link rel="icon" href="/assets/Logo Blue.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ================================================================
+       SIDEBAR
+       ================================================================ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <img src="/assets/Logo White.png" alt="JuanGPT" class="sidebar-logo">
+    </div>
+
+    <div class="sidebar-body">
+
+      <!-- New Chat Button -->
+      <button class="btn-new-chat" id="newChatBtn">
+        <i class="fa-solid fa-plus"></i>
+        <span class="btn-text">New Chat</span>
+      </button>
+
+      <!-- Conversations -->
+      <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;gap:6px;">
+        <div class="sidebar-section-label">Recent Conversations</div>
+        <div class="conversations-list" id="convList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/about" target="_blank">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>About JuanGPT</span>
+      </a>
+      <a href="/">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+    </div>
+
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ================================================================
+       MAIN PANEL
+       ================================================================ -->
+  <main class="main-panel" id="mainPanel">
+
+    <!-- Topbar -->
+    <nav class="topbar">
+      <button class="sidebar-toggle" id="mobileSidebarToggle"
+        style="display:none;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;"
+        aria-label="Open sidebar">
+        <i class="fa-solid fa-bars" style="color:var(--navy);font-size:1rem;"></i>
+      </button>
+      <a href="/" style="line-height:0;">
+        <img src="/assets/Logo Blue.png" alt="JuanGPT" class="topbar-logo">
+      </a>
+      <span class="topbar-title" id="chatTitle">New Conversation</span>
+      <div class="topbar-spacer"></div>
+      <span class="topbar-badge" id="modelBadge">Gemini 2.5 Flash</span>
+    </nav>
+
+    <!-- ── CHAT MESSAGES ── -->
+    <div class="chat-area" id="chatArea">
+
+      <!-- Empty state (removed when first message arrives) -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-state-icon">
+          <img src="/assets/juanGPT-avatar.png" alt="JuanGPT"
+               onerror="this.outerHTML='<i class=\'fa-solid fa-comments\' style=\'font-size:1.8rem;color:white;\'></i>'">
+        </div>
+        <h2>Start a Conversation</h2>
+        <p>Ask JuanGPT anything about Philippine labor statistics, population data, wages, or demographic trends from PSA datasets.</p>
+      </div>
+
+    </div>
+
+    <!-- ── INPUT BAR ── -->
+    <div class="input-bar-wrapper">
+      <div class="input-bar">
+        <textarea
+          id="chatInput"
+          placeholder="Ask JuanGPT about Philippine statistics..."
+          rows="1"
+          aria-label="Message JuanGPT"
+        ></textarea>
+        <div class="input-actions">
+          <button class="btn-send" id="sendBtn">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Send</span>
+          </button>
+        </div>
+      </div>
+      <p class="input-hint">
+        <i class="fa-solid fa-lock" style="font-size:0.58rem;"></i>
+        Enter to send &middot; Shift+Enter for new line &middot; Powered by PSA data
+      </p>
+    </div>
+
+  </main>
+
+</div><!-- end .app-shell -->
+
+<script>
+(function () {
+  'use strict';
+
+  // ── State ──
+  let currentConversationId = null;
+  let isLoading = false;
+
+  // ── Elements ──
+  const sidebar          = document.getElementById('sidebar');
+  const overlay          = document.getElementById('sidebarOverlay');
+  const sidebarToggleBtn = document.getElementById('sidebarToggle');
+  const mobileToggleBtn  = document.getElementById('mobileSidebarToggle');
+  const newChatBtn       = document.getElementById('newChatBtn');
+  const convList         = document.getElementById('convList');
+  const chatArea         = document.getElementById('chatArea');
+  const emptyState       = document.getElementById('emptyState');
+  const chatInput        = document.getElementById('chatInput');
+  const sendBtn          = document.getElementById('sendBtn');
+  const chatTitle        = document.getElementById('chatTitle');
+
+  // ── Sidebar ──
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function syncMobileToggle() {
+    mobileToggleBtn.style.display = isMobile() ? 'flex' : 'none';
+    if (!isMobile() && sidebar.classList.contains('mobile-open')) {
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('active');
+    }
+  }
+
+  sidebarToggleBtn.addEventListener('click', () => {
+    if (isMobile()) {
+      sidebar.classList.toggle('mobile-open');
+      overlay.classList.toggle('active');
+    } else {
+      sidebar.classList.toggle('collapsed');
+    }
+  });
+
+  mobileToggleBtn.addEventListener('click', () => {
+    sidebar.classList.add('mobile-open');
+    overlay.classList.add('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('active');
+  });
+
+  window.addEventListener('resize', syncMobileToggle);
+  syncMobileToggle();
+
+  // ── Textarea auto-resize ──
+  chatInput.addEventListener('input', function () {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+  });
+
+  // ── Utilities ──
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function formatContent(text) {
+    // Basic markdown: bold, italic, paragraphs
+    const escaped = escHtml(text);
+    return '<p>' + escaped
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n\n+/g, '</p><p>')
+      .replace(/\n/g, '<br>') + '</p>';
+  }
+
+  function getTimeAgo(dateStr) {
+    if (!dateStr) return 'Recently';
+    try {
+      const diff = Date.now() - new Date(dateStr).getTime();
+      const mins = Math.floor(diff / 60000);
+      if (mins < 1)  return 'Just now';
+      if (mins < 60) return `${mins}m ago`;
+      const hrs = Math.floor(mins / 60);
+      if (hrs < 24)  return `${hrs}h ago`;
+      return `${Math.floor(hrs / 24)}d ago`;
+    } catch { return 'Recently'; }
+  }
+
+  function nowTime() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function scrollBottom() {
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function hideEmptyState() {
+    const es = document.getElementById('emptyState');
+    if (es) es.remove();
+  }
+
+  // ── API: Load conversations ──
+  async function loadConversations() {
+    try {
+      const res = await fetch('/api/conversations');
+      const convs = await res.json();
+      renderSidebar(convs);
+    } catch (e) {
+      console.error('Failed to load conversations:', e);
+    }
+  }
+
+  function renderSidebar(convs) {
+    convList.innerHTML = '';
+    if (!convs.length) {
+      convList.innerHTML = `
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.32);padding:8px 4px;line-height:1.5;">
+          No conversations yet.<br>Start by typing a question below.
+        </div>`;
+      return;
+    }
+    convs.forEach(conv => {
+      const card = document.createElement('div');
+      card.className = 'conv-card' + (conv.id === currentConversationId ? ' active' : '');
+      card.dataset.id = conv.id;
+      const initials = conv.title.charAt(0).toUpperCase();
+      const when = getTimeAgo(conv.created_at || conv.updated_at || '');
+      card.innerHTML = `
+        <div class="conv-avatar">${initials}</div>
+        <div class="conv-info">
+          <div class="conv-title">${escHtml(conv.title)}</div>
+          <div class="conv-meta">${when} &middot; Gemini Flash</div>
+        </div>
+        <button class="conv-delete" data-id="${conv.id}" title="Delete conversation" aria-label="Delete">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>`;
+
+      card.querySelector('.conv-info').addEventListener('click', () => openConversation(conv.id, conv.title));
+      card.querySelector('.conv-avatar').addEventListener('click', () => openConversation(conv.id, conv.title));
+      card.querySelector('.conv-delete').addEventListener('click', e => {
+        e.stopPropagation();
+        deleteConversation(conv.id);
+      });
+      convList.appendChild(card);
+    });
+  }
+
+  // ── API: Open conversation ──
+  async function openConversation(id, title) {
+    currentConversationId = id;
+    chatTitle.textContent = title || 'Conversation';
+    chatArea.innerHTML = '';
+    try {
+      const res = await fetch(`/api/conversations/${id}/messages`);
+      const msgs = await res.json();
+      msgs.forEach(m => addMessageBlock(m.content, m.role === 'user', m.links));
+    } catch (e) {
+      console.error('Failed to load messages:', e);
+    }
+    document.querySelectorAll('.conv-card').forEach(el =>
+      el.classList.toggle('active', el.dataset.id === id)
+    );
+    scrollBottom();
+  }
+
+  // ── API: Delete conversation ──
+  async function deleteConversation(id) {
+    try {
+      await fetch(`/api/conversations/${id}`, { method: 'DELETE' });
+      if (currentConversationId === id) {
+        currentConversationId = null;
+        chatTitle.textContent = 'New Conversation';
+        chatArea.innerHTML = '';
+        chatArea.appendChild(buildEmptyState());
+      }
+      await loadConversations();
+    } catch (e) {
+      console.error('Failed to delete conversation:', e);
+    }
+  }
+
+  // ── API: Send message ──
+  async function handleMessage(message) {
+    if (!message.trim() || isLoading) return;
+    isLoading = true;
+    sendBtn.disabled = true;
+
+    hideEmptyState();
+    addMessageBlock(message, true);
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+
+    const thinkingEl = addThinkingBlock();
+    scrollBottom();
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: message, conversation_id: currentConversationId })
+      });
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      const data = await res.json();
+      thinkingEl.remove();
+      currentConversationId = data.conversation_id;
+
+      const truncatedTitle = message.length > 52
+        ? message.slice(0, 52) + '…'
+        : message;
+      chatTitle.textContent = truncatedTitle;
+
+      addMessageBlock(data.response, false, data.links);
+      await loadConversations();
+    } catch (err) {
+      thinkingEl.remove();
+      addMessageBlock(
+        'Sorry, I encountered an error while processing your request. Please try again.',
+        false
+      );
+      console.error('Chat error:', err);
+    } finally {
+      isLoading = false;
+      sendBtn.disabled = false;
+      scrollBottom();
+    }
+  }
+
+  // ── DOM: Build message card ──
+  function addMessageBlock(content, isUser, links) {
+    const block = document.createElement('div');
+    block.className = `msg-block ${isUser ? 'user' : 'assistant'}`;
+
+    // Avatar
+    const avatarHTML = isUser
+      ? `<div class="msg-avatar user-av" aria-hidden="true">U</div>`
+      : `<div class="msg-avatar bot-av" aria-hidden="true">
+           <img src="/assets/juanGPT-avatar.png" alt=""
+                onerror="this.outerHTML='J'">
+         </div>`;
+
+    // Dataset links
+    let linksHTML = '';
+    if (!isUser && links) {
+      const linkArr = links.split(',').map(l => l.trim()).filter(Boolean);
+      const chips = linkArr.map((url, i) =>
+        `<a href="${escHtml(url)}" target="_blank" rel="noopener noreferrer" class="dataset-link-chip">
+           <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i>
+           Source Dataset${linkArr.length > 1 ? ' ' + (i + 1) : ''}
+         </a>`
+      ).join('');
+      linksHTML = `
+        <div class="dataset-links">
+          <div class="dataset-links-label">
+            <i class="fa-solid fa-database" style="margin-right:5px;"></i>Explore Source Datasets
+          </div>
+          ${chips}
+        </div>`;
+    }
+
+    block.innerHTML = `
+      ${avatarHTML}
+      <div class="msg-card">
+        <div class="msg-card-header">
+          <span class="msg-card-name">${isUser ? 'You' : 'JuanGPT'}</span>
+          <span class="msg-card-time">${nowTime()}</span>
+        </div>
+        <div class="msg-card-body">${formatContent(content)}</div>
+        ${linksHTML}
+      </div>`;
+
+    chatArea.appendChild(block);
+    return block;
+  }
+
+  // ── DOM: Thinking indicator ──
+  function addThinkingBlock() {
+    const block = document.createElement('div');
+    block.className = 'msg-block assistant';
+    block.innerHTML = `
+      <div class="msg-avatar bot-av" aria-hidden="true">
+        <img src="/assets/juanGPT-avatar.png" alt=""
+             onerror="this.outerHTML='J'">
+      </div>
+      <div class="msg-card">
+        <div class="msg-card-header">
+          <span class="msg-card-name">JuanGPT</span>
+          <span class="msg-card-time" style="font-style:italic;color:var(--accent);">Thinking…</span>
+        </div>
+        <div class="msg-card-body">
+          <div class="thinking-dots" aria-label="Thinking">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>`;
+    chatArea.appendChild(block);
+    return block;
+  }
+
+  // ── DOM: Empty state ──
+  function buildEmptyState() {
+    const div = document.createElement('div');
+    div.className = 'empty-state';
+    div.innerHTML = `
+      <div class="empty-state-icon">
+        <img src="/assets/juanGPT-avatar.png" alt="JuanGPT"
+             onerror="this.outerHTML='<i class=\'fa-solid fa-comments\' style=\'font-size:1.8rem;color:white;\'></i>'">
+      </div>
+      <h2>Start a Conversation</h2>
+      <p>Ask JuanGPT anything about Philippine labor statistics, population data, wages, or demographic trends from PSA datasets.</p>`;
+    return div;
+  }
+
+  // ── Event listeners ──
+  sendBtn.addEventListener('click', () => handleMessage(chatInput.value));
+
+  chatInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleMessage(chatInput.value);
+    }
+  });
+
+  newChatBtn.addEventListener('click', () => {
+    currentConversationId = null;
+    chatTitle.textContent = 'New Conversation';
+    chatArea.innerHTML = '';
+    chatArea.appendChild(buildEmptyState());
+    document.querySelectorAll('.conv-card').forEach(el => el.classList.remove('active'));
+    chatInput.focus();
+  });
+
+  // ── Init ──
+  loadConversations();
+
+  // Open conversation passed from index.html sidebar click
+  const openId = localStorage.getItem('openConversationId');
+  if (openId) {
+    localStorage.removeItem('openConversationId');
+    // Wait for conversations to load, then open
+    setTimeout(() => openConversation(openId, ''), 300);
+  }
+
+  // Handle pending question from index.html send
+  const pending = localStorage.getItem('pendingQuestion');
+  if (pending) {
+    localStorage.removeItem('pendingQuestion');
+    setTimeout(() => handleMessage(pending), 150);
+  }
+
+})();
+</script>
+
+</body>
+</html>
